@@ -60,20 +60,22 @@ public class InventoryManager implements InventoryControl {
 		Position<Item> next = givenInventory.itemInventory.after(current);
 		System.out.println("\nContents of "+ givenInventory.getInventoryID() + ":");
 		
-		while (next != null){	
+		while (next != null) {	
 			
 			if (next != givenInventory.itemInventory.last()){
 			
-			System.out.println("Item: " + current.getElement().getItemName() + " | Qty: " + current.getElement().getItemQuantity());
+				System.out.println("Item: " + current.getElement().getItemName() + " | Qty: " + current.getElement().getItemQuantity());
+				
+				current = next;
+				next = givenInventory.itemInventory.after(next);
 			
-			current = next;
-			next = givenInventory.itemInventory.after(next);
-			
-			} /*else {
-				System.out.println("Item: " + current.getElement().itemName + " | Qty: " + current.getElement().itemQuantity);
+			} else {
+				
+				
+				System.out.println("Item: " + next.getElement().getItemName() + " | Qty: " + next.getElement().getItemQuantity());
 				
 				next = givenInventory.itemInventory.after(next);
-			}*/
+			}
 		
 		}//while end
 	}//end printContents
@@ -106,7 +108,7 @@ public class InventoryManager implements InventoryControl {
 				
 				while (next != null) {	
 					
-					if (current.getElement().getItemName().toUpperCase() == givenItemName.toUpperCase()) {
+					if (current.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase())) {
 						
 						givenInventory.itemInventory.remove(current);
 						break;
@@ -134,7 +136,7 @@ public class InventoryManager implements InventoryControl {
 				
 				while (next != null){	
 					
-					if (current.getElement().getItemName().toUpperCase() == givenItemName.toUpperCase()) {
+					if ((current.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase()))) {
 						
 						int currentQTY = current.getElement().getItemQuantity();
 						current.getElement().setItemQuantity(currentQTY + 1);
@@ -163,7 +165,7 @@ public class InventoryManager implements InventoryControl {
 		
 		while (next != null){	
 			
-			if (current.getElement().getItemName().toUpperCase() == givenItemName.toUpperCase()) {
+			if (current.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase())) {
 				
 				int currentQTY = current.getElement().getItemQuantity();
 				
@@ -202,7 +204,7 @@ public class InventoryManager implements InventoryControl {
 		
 		while (next != null){	
 			
-			if (current.getElement().getItemName().toUpperCase() == givenItemName.toUpperCase()) {
+			if (current.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase())) {
 				
 				//Confirm the current quantity is greater than zero.
 				if (givenItemQuantity >= 0 ) {
@@ -235,10 +237,10 @@ public class InventoryManager implements InventoryControl {
 		Item newItem;
 		
 		if (givenItemQuantity < 0 ){
-			
+			System.out.println("Illegal given item quantity, the quantity of " + givenItemName + " must be zero or greater.\nSetting quantity to zero.");
 			newItem = new Item(givenItemName, 0);
 			
-			throw new IllegalArgumentException("Illegal given item quantity, the quantity must be zero or greater. Setting quantity to zero");
+			
 		
 		} else {
 			

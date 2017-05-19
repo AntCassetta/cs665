@@ -9,7 +9,7 @@ public abstract class Inventory {
 	//private int totalOOS = 0;
 	protected LinkedPositionalList<Item> itemInventory = new LinkedPositionalList<Item>();
 	
-	public Inventory(InventoryManager newInventoryControl){
+	public Inventory(InventoryControl newInventoryControl){
 		
 		inventoryControl = newInventoryControl;
 		inventoryControl.addInventory(this);
@@ -40,6 +40,12 @@ public abstract class Inventory {
 		
 		inventoryControl.addItem(this, givenItemName, givenItemQuantity);
 	
+	}//end addItem
+	
+	public void removeItem (String givenItemName) {
+			
+		inventoryControl.removeItem(this, givenItemName);
+		
 	}//end addItem
 	
 	public void incrementItem(String givenItemName) {
