@@ -1,4 +1,4 @@
-package cs665;
+package inventories;
 
 public class ShoppingList {
 
