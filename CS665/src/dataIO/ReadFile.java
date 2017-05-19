@@ -1,4 +1,4 @@
-package io;
+package dataIO;
 
 public class ReadFile {
 
