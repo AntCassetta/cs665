@@ -28,10 +28,19 @@ public class Item {
 		 */
 	}//end Item Constructor
 	
+	/**returns the string name of the item
+	 * @return itemName the string name of the item
+	 */
 	public String getItemName() { return itemName; }
 	
+	/**returns the int value of the item quantity
+	 * @return itemQuantity returns the int value of the quantity
+	 */
 	public int getItemQuantity() { return itemQuantity; }
 	
+	/**Sets the item quantity to the int value given
+	 * @param givenQuantity and int value
+	 */
 	public void setItemQuantity(int givenQuantity) { itemQuantity = givenQuantity;}
 	
 }//end Item
