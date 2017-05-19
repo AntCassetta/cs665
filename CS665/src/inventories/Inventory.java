@@ -5,14 +5,16 @@ public abstract class Inventory {
 	
 	private InventoryControl inventoryControl;
 	private int inventoryID;
+	private String inventoryName;
 	//private int totalItems = 0;
 	//private int totalOOS = 0;
 	protected LinkedPositionalList<Item> itemInventory = new LinkedPositionalList<Item>();
 	
-	public Inventory(InventoryControl newInventoryControl){
+	public Inventory(InventoryControl newInventoryControl, String nickName){
 		
 		inventoryControl = newInventoryControl;
 		inventoryControl.addInventory(this);
+		inventoryControl.setInventoryName(this, nickName);
 		
 	}//end constructor
 	
@@ -20,20 +22,19 @@ public abstract class Inventory {
 	public void setInventoryID (int idNumber) { inventoryID = idNumber; } //end setInventoryID
 	
 	
+	public void setInventoryName(String givenName) {inventoryName = givenName;} // end setInventoryName
+	
+	
 	public int getInventoryID() { return inventoryID; }//end getInventoryID
 	
 	
-	public void isEmpty(){
-		
-		inventoryControl.isEmpty(this);
+	public String getInventoryName() { return inventoryName; }//end getInventoryName
 	
-	}//end isEmpty
+	
+	public void isEmpty(){ inventoryControl.isEmpty(this); }//end isEmpty
 
 	
-	public void printContents() {
-		
-		inventoryControl.printContents(this);
-	}//end printContents
+	public void printContents() { inventoryControl.printContents(this);	}//end printContents
 	
 	
 	public void addItem (String givenItemName, int givenItemQuantity) {
@@ -56,9 +57,10 @@ public abstract class Inventory {
 	
 	public void decrementItem(String givenItemName) {
 			
-			inventoryControl.incrementItem(this, givenItemName);
+			inventoryControl.decrementItem(this, givenItemName);
 		
 		}//end decrementItem
+
 	
 	public void updateItemQuantity(String givenItemName, int givenItemQuantity) {
 		

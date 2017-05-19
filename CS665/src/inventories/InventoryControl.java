@@ -13,6 +13,12 @@ public interface InventoryControl {
 	 */
 	public void addInventory(Inventory newInventory);
 	
+	/**Assigns an inventory object a nick name. Ex: "Kitchen"
+	 * 
+	 * @param givenName a string to assign to the inventories as a nick name
+	 */
+	public void setInventoryName(Inventory givenInventory, String newName);
+	
 	
 	/**Removes the given inventory object from the inventoryRoster. This inventoryID is not reclaimed.
 	 * @param givenInventory the inventory object to be removed

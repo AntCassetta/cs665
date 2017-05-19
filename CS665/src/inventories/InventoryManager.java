@@ -12,10 +12,12 @@ public class InventoryManager implements InventoryControl {
 	private ArrayList<Inventory> inventoryRoster;
 	int nextID = 00;
 
+	
 	/**Constructs an InventoryManager object*/
 	public InventoryManager(){
 		inventoryRoster = new ArrayList<Inventory>();
 	}//end constructor
+	
 	
 	/**Assigns an inventory object an InventoryID and stores the object within a list for later reference
 	 * @param newInventory The new inventory object to be assigned an inventoryID and stored.
@@ -27,7 +29,19 @@ public class InventoryManager implements InventoryControl {
 		newInventory.setInventoryID(nextID);
 		
 	}//end addInventory
+	
+	
+	/**Assigns an inventory object a nick name. Ex: "Kitchen"
+	 * 
+	 * @param givenName a string to assign to the inventories as a nick name
+	 */
+	public void setInventoryName(Inventory givenInventory, String newName) {
+		
+		givenInventory.setInventoryName(newName);
+		
+	}
 
+	
 	/**Removes the given inventory object from the inventoryRoster. This inventoryID is not reclaimed.
 	 * @param givenInventory the inventory object to be removed
 	 */
@@ -40,46 +54,37 @@ public class InventoryManager implements InventoryControl {
 		}//end for
 	}//end removeInventory
 
+	
 	/**Checks if the inventory is empty*/
 	public void isEmpty(Inventory givenInventory) {
 		
 				if (givenInventory.itemInventory.isEmpty()){
-					System.out.println("Inventory "+ givenInventory.getInventoryID() + " is empty.");
+					System.out.println("Inventory "+ givenInventory.getInventoryID() + " \""+ givenInventory.getInventoryName()+ "\" is empty.");
 				
 				} else{
-					System.out.println("Inventory "+ givenInventory.getInventoryID() + " has " 
+					System.out.println("Inventory "+ givenInventory.getInventoryID() + " \""+ givenInventory.getInventoryName()+ "\" has " 
 											+ givenInventory.itemInventory.size() + " items.");
 				}//end if else
 
 	}//end is empty
 
+	
 	/**Prints contents of the inventory to the console*/
 	public void printContents(Inventory givenInventory) {
 		
-		Position<Item> current = givenInventory.itemInventory.first();
-		Position<Item> next = givenInventory.itemInventory.after(current);
-		System.out.println("\nContents of "+ givenInventory.getInventoryID() + ":");
+		Position<Item> walk = givenInventory.itemInventory.first();
+		System.out.println("\nContents of "+ givenInventory.getInventoryName() + ":");
 		
-		while (next != null) {	
+		while (walk != givenInventory.itemInventory.after(givenInventory.itemInventory.last())) {	
 			
-			if (next != givenInventory.itemInventory.last()){
-			
-				System.out.println("Item: " + current.getElement().getItemName() + " | Qty: " + current.getElement().getItemQuantity());
+				System.out.println("Item: " + walk.getElement().getItemName() + " | Qty: " + walk.getElement().getItemQuantity());
 				
-				current = next;
-				next = givenInventory.itemInventory.after(next);
-			
-			} else {
-				
-				
-				System.out.println("Item: " + next.getElement().getItemName() + " | Qty: " + next.getElement().getItemQuantity());
-				
-				next = givenInventory.itemInventory.after(next);
-			}
-		
+				walk =  givenInventory.itemInventory.after(walk);
 		}//while end
+		System.out.println();
 	}//end printContents
 
+	
 	/**Attempts to create the new Item object, upon success, the object will be added to the target inventory provided.
 	 * 
 	 * @param givenInventory ID of the target inventory 
@@ -94,6 +99,7 @@ public class InventoryManager implements InventoryControl {
 		
 	}//end addItem
 
+	
 	/**Locates and removes an Item object from the inventory.
 	 * 
 	 * @param givenInventory ID of the target inventory 
@@ -103,26 +109,30 @@ public class InventoryManager implements InventoryControl {
 		
 		
 				
-				Position<Item> current = givenInventory.itemInventory.first();
-				Position<Item> next = givenInventory.itemInventory.after(current);
+				Position<Item> walk = givenInventory.itemInventory.first();
 				
-				while (next != null) {	
+				while (walk != givenInventory.itemInventory.after(givenInventory.itemInventory.last())) {	
 					
-					if (current.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase())) {
+					if (walk.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase())) {
 						
-						givenInventory.itemInventory.remove(current);
+						System.out.println("\nRemoving " + walk.getElement().getItemName());
+						givenInventory.itemInventory.remove(walk);
 						break;
 					
 					} else {
 						
-						next = givenInventory.itemInventory.after(next);
-					
+						walk = givenInventory.itemInventory.after(walk);
+						if (walk == givenInventory.itemInventory.last()) {
+							System.out.println("\nUnable to find item."); //if the code gets here the item is not present.
+						}
 					}//end if else
 				
 				}//while end
 				
+				
 	}//end removeItem
 
+	
 	/**Locates the given item's position and increments the items quantity by 1 unit.
 	 * Example: Milk, 1 incrementItem(01, "Milk") will result Inventory 01: Item: Milk QTY: 2
 	 * 
@@ -131,27 +141,28 @@ public class InventoryManager implements InventoryControl {
 	 */
 	public void incrementItem(Inventory givenInventory, String givenItemName) {
 		
-				Position<Item> current = givenInventory.itemInventory.first();
-				Position<Item> next = givenInventory.itemInventory.after(current);
+				Position<Item> walk = givenInventory.itemInventory.first();
 				
-				while (next != null){	
+				while (walk != givenInventory.itemInventory.after(givenInventory.itemInventory.last())) {	
 					
-					if ((current.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase()))) {
+					if ((walk.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase()))) {
 						
-						int currentQTY = current.getElement().getItemQuantity();
-						current.getElement().setItemQuantity(currentQTY + 1);
+						int currentQTY = walk.getElement().getItemQuantity();
+						walk.getElement().setItemQuantity(currentQTY + 1);
 						break;
 					
 					} else {
-						
-						next = givenInventory.itemInventory.after(next);
-					
+						walk = givenInventory.itemInventory.after(walk);
+						if (walk == givenInventory.itemInventory.after(givenInventory.itemInventory.last())) {
+							System.out.println("\nUnable to find item."); //if the code gets here the item is not present.
+						}
 					}//end if else
 					
 				}//while end
 
 	}//end incrementItem
 
+	
 	/**Locates the given item's position and decrements the items quantity by 1 unit.
 	 * Example: Milk, 1 decrementItem(01, "Milk") will result Inventory 01: Item: Milk QTY: 0
 	 * 
@@ -160,36 +171,40 @@ public class InventoryManager implements InventoryControl {
 	 */
 	public void decrementItem(Inventory givenInventory, String givenItemName) {
 		
-		Position<Item> current = givenInventory.itemInventory.first();
-		Position<Item> next = givenInventory.itemInventory.after(current);
+		Position<Item> walk = givenInventory.itemInventory.first();
 		
-		while (next != null){	
+		while (walk != givenInventory.itemInventory.after(givenInventory.itemInventory.last())) {	
 			
-			if (current.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase())) {
+			if ((walk.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase()))) {
 				
-				int currentQTY = current.getElement().getItemQuantity();
+				int currentQTY = walk.getElement().getItemQuantity();
 				
 				//Confirm the current quantity is greater than zero.
 				if (currentQTY > 0 ) {
-
-					current.getElement().setItemQuantity(currentQTY - 1);
+	
+					walk.getElement().setItemQuantity(currentQTY - 1);
 					break;
 				
 				} else {
 					
-					throw new IllegalArgumentException("Cannot Decrement, the quantity must be zero or greater.");
-				
+					System.out.println("Error: Cannot reduce the quantity below zero.");
+					break;
+					
 				}//end inner if
-				
-			} else {
-				
-				next = givenInventory.itemInventory.after(next);
 			
-			}//outer end if else
+			} else {
+				walk = givenInventory.itemInventory.after(walk);
+				if (walk == givenInventory.itemInventory.after(givenInventory.itemInventory.last())) {
+					System.out.println("\nUnable to find item."); //if the code gets here the item is not present.
+				}
+			
+			}//end outer if else
+			
 		}//while end
 		
 	}//end decrementItem
 
+	
 	/**Locates the given item's position and updates the quantity to the given value. 
 	 * Example: Milk, 1 updateItemQuantity(01, "Milk", 4) will result Inventory 01: Item: Milk QTY: 4
 	 * 
@@ -199,34 +214,40 @@ public class InventoryManager implements InventoryControl {
 	 */
 	public void updateItemQuantity(Inventory givenInventory, String givenItemName, int givenItemQuantity) {
 		
-		Position<Item> current = givenInventory.itemInventory.first();
-		Position<Item> next = givenInventory.itemInventory.after(current);
+		Position<Item> walk = givenInventory.itemInventory.first();
 		
-		while (next != null){	
+		while (walk != givenInventory.itemInventory.after(givenInventory.itemInventory.last())) {	
 			
-			if (current.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase())) {
+			if ((walk.getElement().getItemName().toUpperCase().equals(givenItemName.toUpperCase()))) {
 				
-				//Confirm the current quantity is greater than zero.
-				if (givenItemQuantity >= 0 ) {
-
-					current.getElement().setItemQuantity(givenItemQuantity);
+				int givenQTY = givenItemQuantity;
+				
+				//Confirm the given quantity is zero or greater.
+				if (givenQTY >= 0 ) {
+	
+					walk.getElement().setItemQuantity(givenQTY);
 					break;
 				
 				} else {
 					
-					throw new IllegalArgumentException("Quantity not valid. The quantity must be zero or greater.");
+					System.out.println("Error: Cannot reduce the quantity below zero.");
+					break;
 					
 				}//end inner if
-				
-			} else {
-				
-				next = givenInventory.itemInventory.after(next);
 			
-			}//outer end if else
+			} else {
+				walk = givenInventory.itemInventory.after(walk);
+				if (walk == givenInventory.itemInventory.last()) {
+					System.out.println("\nUnable to find item."); //if the code gets here the item is not present.
+				}
+			
+			}//end outer if else
+			
 		}//while end
 		
-	}//end
+	}//end updateItemQuantity
 
+	
 	/**Creates and returns an item object, if the given quantity is zero or great the given quantity is used otherwise zero is used.
 	 * 
 	 * @param givenItemName name of the object to be created
@@ -237,7 +258,7 @@ public class InventoryManager implements InventoryControl {
 		Item newItem;
 		
 		if (givenItemQuantity < 0 ){
-			System.out.println("Illegal given item quantity, the quantity of " + givenItemName + " must be zero or greater.\nSetting quantity to zero.");
+			System.out.println("Illegal item quantity, the quantity of " + givenItemName + " must be zero or greater.\nSetting quantity to zero.");
 			newItem = new Item(givenItemName, 0);
 			
 			
