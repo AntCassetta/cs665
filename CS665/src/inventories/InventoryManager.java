@@ -9,7 +9,7 @@ import dataStructures.Position;
  */
 public class InventoryManager implements InventoryControl {
 	
-	private ArrayList<Inventory> inventoryRoster;
+	protected ArrayList<Inventory> inventoryRoster;
 	int nextID = 00;
 
 	

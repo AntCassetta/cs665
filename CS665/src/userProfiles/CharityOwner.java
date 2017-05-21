@@ -1,5 +1,5 @@
 package userProfiles;
 
-public class RefrigeratorRaider {
+public class CharityOwner {
 
 }

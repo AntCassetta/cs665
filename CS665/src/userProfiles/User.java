@@ -1,4 +1,4 @@
-package cs665;
+package userProfiles;
 
 public abstract class User {
 
