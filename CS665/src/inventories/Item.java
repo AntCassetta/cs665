@@ -4,10 +4,9 @@ package inventories;
 //import java.util.Date;
 
 /**Item class objects represent real world items to be tracked within inventories. 
- * 
  * @author anthonycassetta
  */
-public class Item {	
+abstract class Item {	
 	private String itemName;
 	private int itemQuantity;
 	//Date dateAdded;
@@ -15,17 +14,13 @@ public class Item {
 	
 	
 	/**constructor for Item objects
-	 * 
 	 * @param givenItemName string name the item will be initialized with.
 	 * @param givenItemQuantity integer quantity the item will be initialized with
 	 */
 	public Item(String givenItemName, int givenItemQuantity) {
 		itemName = givenItemName;
 		itemQuantity = givenItemQuantity;
-		/*currentTime now = new currentTime();
-		 *dateAdded = now.getInstanceDate();
-		 *now.calendar.add(dateAdded., 14);
-		 */
+		
 	}//end Item Constructor
 	
 	/**returns the string name of the item
