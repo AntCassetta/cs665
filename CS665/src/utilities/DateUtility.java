@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeFormatter;
 
-public class DateUtility {
+class DateUtility {
 	
 	private LocalDate dateToday;
 	private LocalDate dateDefaultExp;

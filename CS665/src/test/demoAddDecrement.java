@@ -21,9 +21,9 @@ public class demoAddDecrement {
 		kitchen.isEmpty();
 		
 		System.out.println("\n- Let's add Chedder Cheese 2, Milk 1, and try to add Butter, -2");
-		kitchen.addItem("Chedder Cheese", 2);
-		kitchen.addItem("Milk", 1);
-		kitchen.addItem("Butter", -2);
+		kitchen.addItem("Chedder Cheese", 2, "Dairy");
+		kitchen.addItem("Milk", 1, "Dairy");
+		kitchen.addItem("Butter", -2, "Dairy");
 		
 		System.out.println("\n-Is the Kitchen Refrigerator still empty?");
 		kitchen.isEmpty();
@@ -61,11 +61,11 @@ public class demoAddDecrement {
 
 		System.out.println("-Now let's work with our hoppingList \"Market List\".\n"
 				+ "-Let's add some apples, bananas and Peanut Butter");
-		marketList.addItem("Apples", 12);
+		marketList.addItem("Apples", 12, "Produce");
 		
-		marketList.addItem("Bananas", -2);
+		marketList.addItem("Steak", -2, "Meat");
 		
-		marketList.addItem("Peanut Butter", 1);
+		marketList.addItem("Peanut Butter", 1, "Misc");
 		
 		marketList.printContents();
 		

@@ -41,7 +41,7 @@ public interface InventoryControl {
 	 * @param givenItemName name of the item to be created
 	 * @param GivenitemQuantity quantity of the item to be added
 	 */
-	public void addItem(Inventory givenInventory, String givenItemName, int givenItemQuantity);
+	public void addItem(Inventory givenInventory, String givenItemName, int givenItemQuantity, String givenItemType);
 	
 	
 	/**Locates and removes an Item object from the inventory.
@@ -86,6 +86,7 @@ public interface InventoryControl {
 	 * @param givenItemName name of the object to be created
 	 * @param givenItemQuantity initial quantity of the object
 	 */
-	public Item createItem(String givenItemName, int givenItemQuantity);
-	
+	public Item createItem(String givenItemName, int givenItemQuantity, String givenItemType);
+
+		
 }//end InventoryControl

@@ -91,9 +91,10 @@ public class InventoryManager implements InventoryControl {
 	 * @param givenItemName name of the item to be created
 	 * @param GivenitemQuantity quantity of the item to be added
 	 */
-	public void addItem(Inventory givenInventory, String givenItemName, int givenItemQuantity) {
+	@Override
+	public void addItem(Inventory givenInventory, String givenItemName, int givenItemQuantity, String givenItemType) {
 		
-		Item newItem = createItem(givenItemName, givenItemQuantity);
+		Item newItem = createItem(givenItemName, givenItemQuantity, givenItemType);
 		
 		givenInventory.itemInventory.addLast(newItem);
 		
@@ -253,23 +254,25 @@ public class InventoryManager implements InventoryControl {
 	 * @param givenItemName name of the object to be created
 	 * @param givenItemQuantity initial quantity of the object
 	 */
-	public Item createItem(String givenItemName, int givenItemQuantity) {
+	public Item createItem(String givenItemName, int givenItemQuantity, String givenItemType) {
 		
+		ItemFactory ItemFactory = new ItemFactory();
 		Item newItem;
 		
 		if (givenItemQuantity < 0 ){
 			System.out.println("Illegal item quantity, the quantity of " + givenItemName + " must be zero or greater.\nSetting quantity to zero.");
-			newItem = new Item(givenItemName, 0);
+			newItem = ItemFactory.getItem(givenItemName, 0, givenItemType);
 			
 			
 		
 		} else {
 			
-			newItem = new Item(givenItemName, givenItemQuantity);
+			newItem = ItemFactory.getItem(givenItemName, givenItemQuantity, givenItemType);
 		}
 		
 		return newItem;
 	
 	}//end createItem
+
 
 }//end InventoryManager

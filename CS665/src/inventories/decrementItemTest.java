@@ -10,7 +10,7 @@ public class decrementItemTest {
 	public void test() {
 		InventoryManager testManager = new InventoryManager();
 		Refrigerator testFridge = new Refrigerator(testManager, "test Fridge");
-		testFridge.addItem("Milk", 2);
+		testFridge.addItem("Milk", 2, "Dairy");
 		
 		
 		//assert statements
