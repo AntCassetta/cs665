@@ -1,7 +1,6 @@
 package navigation;
 
 import java.util.Scanner;
-
 import userProfiles.User;
 
 public class RefrigeratorRaider {
