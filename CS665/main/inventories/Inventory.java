@@ -37,9 +37,9 @@ public abstract class Inventory {
 	public void printContents() { inventoryControl.printContents(this);	}//end printContents
 	
 	
-	public void addItem (String givenItemName, int givenItemQuantity) {
+	public void addItem (String givenItemName, int givenItemQuantity, String givenItemType) {
 		
-		inventoryControl.addItem(this, givenItemName, givenItemQuantity);
+		inventoryControl.addItem(this, givenItemName, givenItemQuantity, givenItemType);
 	
 	}//end addItem
 	

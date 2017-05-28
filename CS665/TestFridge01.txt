@@ -1,0 +1,3 @@
+Milk,2
+Cheese,1
+Eggs,6

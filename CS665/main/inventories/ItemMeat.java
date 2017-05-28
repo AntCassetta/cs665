@@ -1,8 +1,8 @@
 package inventories;
 
-public class MeatItem extends Item {
+public class ItemMeat extends Item {
 
-	public MeatItem(String givenItemName, int givenItemQuantity, String givenItemType) {
+	public ItemMeat(String givenItemName, int givenItemQuantity, String givenItemType) {
 		super(givenItemName, givenItemQuantity, givenItemType);
 	}//end constructor
 

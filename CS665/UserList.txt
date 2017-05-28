@@ -1,0 +1,4 @@
+TestOwner,01,OWNER
+TestRaider,02,RADIER
+TestBusiness,03,BUSINESS
+TestCharity,04,CHARITY

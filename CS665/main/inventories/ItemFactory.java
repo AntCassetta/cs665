@@ -14,16 +14,16 @@ public class ItemFactory {
 				switch(c){
 				
 				case DAIRY:
-					return new DairyItem(givenItemName, givenItemQuantity, givenItemType);
+					return new ItemDairy(givenItemName, givenItemQuantity, givenItemType);
 					
 				case MEAT:
-					return new MeatItem(givenItemName, givenItemQuantity, givenItemType);
+					return new ItemMeat(givenItemName, givenItemQuantity, givenItemType);
 					
 				case PRODUCE:
-					return new ProduceItem(givenItemName, givenItemQuantity, givenItemType);
+					return new ItemProduce(givenItemName, givenItemQuantity, givenItemType);
 					
 				case MISC:
-					return new MiscItem(givenItemName, givenItemQuantity, givenItemType);
+					return new ItemMisc(givenItemName, givenItemQuantity, givenItemType);
 				
 				}//end switch
 				

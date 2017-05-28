@@ -1,6 +1,4 @@
-package test;
-import inventories.*;
-import dataIO.*;
+package inventories;
 
 public class demoAddDecrement {
 	

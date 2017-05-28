@@ -1,0 +1,2 @@
+TestFridge, 01, Refrigerator
+TestList, 02, ShoppingList
