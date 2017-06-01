@@ -2,7 +2,7 @@ package RefrigeratorRaider;
 
 import java.util.Scanner;
 
-import navigation.DataScanner;
+import utilities.DataScanner;
 
 public class RefrigeratorRaider {
 	

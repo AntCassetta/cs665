@@ -3,8 +3,8 @@ package RefrigeratorRaider;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import navigation.DataScanner;
 import userProfiles.User;
+import utilities.DataScanner;
 
 public class MainMenu implements State {
 	
