@@ -1,7 +1,10 @@
 package inventories;
 
+
 import java.util.ArrayList;
+import RefrigeratorRaider.*;
 import dataStructures.Position;
+
 
 /**Inventory Manager is the concrete class for mediating the instances of Inventory objects and Item objects.
  * 

@@ -1,8 +1,14 @@
-package inventories;
+package RefrigeratorRaider;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import RefrigeratorRaider.InvIterator;
+import RefrigeratorRaider.OOSIterator;
+import inventories.InventoryManager;
+import inventories.Item;
+import inventories.Refrigerator;
 
 public class OOSIteratorTest {
 
@@ -25,7 +31,7 @@ public class OOSIteratorTest {
 		Item currentIt = it.getCurrentElement();
 		
 		//assert statements
-		assertEquals(7, testFridge.itemInventory.size());
+		assertEquals(7, testFridge.getItemInv().size());
 		assertEquals("Milk", currentIt.getItemName());
 		assertEquals(false, it.isDone());
 		

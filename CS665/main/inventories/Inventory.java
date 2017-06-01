@@ -31,6 +31,9 @@ public abstract class Inventory {
 	public String getInventoryName() { return inventoryName; }//end getInventoryName
 	
 	
+	public LinkedPositionalList<Item> getItemInv() { return itemInventory; }//end getItemInv 
+	
+	
 	public void isEmpty(){ inventoryControl.isEmpty(this); }//end isEmpty
 
 	
@@ -49,17 +52,20 @@ public abstract class Inventory {
 	
 	}//end addItem
 	
+	
 	public void removeItem (String givenItemName) {
 			
 		inventoryControl.removeItem(this, givenItemName);
 		
 	}//end addItem
 	
+	
 	public void incrementItem(String givenItemName) {
 		
 		inventoryControl.incrementItem(this, givenItemName);
 	
 	}//end incrementItem
+	
 	
 	public void decrementItem(String givenItemName) {
 			
@@ -73,5 +79,6 @@ public abstract class Inventory {
 		inventoryControl.updateItemQuantity(this, givenItemName, givenItemQuantity);
 	
 	}//end updateItemQuantity
+	
 	
 }//end Inventory

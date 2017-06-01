@@ -1,4 +1,6 @@
-package inventories;
+package RefrigeratorRaider;
+
+import inventories.Inventory;
 
 public class EXPIterator extends InvIterator {
 
@@ -8,33 +10,33 @@ public class EXPIterator extends InvIterator {
 	}
 
 	@Override
-	void setToFirst() {
+	public void setToFirst() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	boolean isDone() {
+	public boolean isDone() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	void increment() {
+	public void increment() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	Object getCurrentElement() {
+	public Object getCurrentElement() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	int getTotal() {
+	public int getTotal() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-}
+}//end InvIterator

@@ -1,7 +1,9 @@
-package inventories;
+package RefrigeratorRaider;
 
 import dataStructures.LinkedPositionalList;
 import dataStructures.Position;
+import inventories.Inventory;
+import inventories.Item;
 
 /**OOSIterator is an iterator for use with Inventory objects, its purpose is to iterate through out of stock items (Item QTY = 0) 
  * 
@@ -28,17 +30,17 @@ public class OOSIterator extends InvIterator<Item>{
 	 */
 	public OOSIterator(Inventory givenInventory) {
 			super(givenInventory);
-			InvItems = givenInventory.itemInventory;	
+			InvItems = givenInventory.getItemInv();	
 	}
 
 	/**Sets the iterator to the first qualifying item, the first Item with QTY = 0.*/
 	@Override
-	void setToFirst() {
+	public void setToFirst() {
 		
 		walk = InvItems.first();
 		while (walk != InvItems.after(InvItems.last())) {
 			
-			if(walk.getElement().itemQuantity == 0) {
+			if(walk.getElement().getItemQuantity() == 0) {
 				OOS.addLast(walk.getElement());
 			}
 			
@@ -52,7 +54,7 @@ public class OOSIterator extends InvIterator<Item>{
 
 	/**returns true if the cursor has reached the end of the iteration and false otherwise.*/
 	@Override
-	boolean isDone() {
+	public boolean isDone() {
 		
 		if (cursor == null){
 			return true;
@@ -65,7 +67,7 @@ public class OOSIterator extends InvIterator<Item>{
 
 	/**increments the cursor to the next Item in the iteration.*/
 	@Override
-	void increment() {
+	public void increment() {
 
 			cursor = OOS.after(cursor);
 		
@@ -73,11 +75,11 @@ public class OOSIterator extends InvIterator<Item>{
 
 	/**returns the current Item as indicated by the cursor*/
 	@Override
-	Item getCurrentElement() {
+	public Item getCurrentElement() {
 		return cursor.getElement();
 	}//end getCurrentElement
 
 	/**returns the total number of out of stock Items*/
-	int getTotal(){ return OOS.size();}
+	public int getTotal(){ return OOS.size();}
 	
 }//end OOSIterator
