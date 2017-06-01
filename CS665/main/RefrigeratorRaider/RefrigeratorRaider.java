@@ -1,26 +1,30 @@
-package navigation;
+package RefrigeratorRaider;
 
 import java.util.Scanner;
-import userProfiles.User;
+
+import navigation.DataScanner;
 
 public class RefrigeratorRaider {
 	
-	private static User activeUser;
 	
 	public static void main(String[] args) {
+		//scanner object
 		Scanner scan = DataScanner.getDataScanner();
 		
+		//context object
 		Context context = new Context();
 		
+		//state objects
 		State logIn = new LogIn();
 		State mainMenu = new MainMenu();
 		
+		//set initial state
 		context.setState(logIn);
 		
-		
-		
+		//variable used to check if menu should still be running.
 		boolean menuRunning = true;
 		
+		//do while menuRunning is true
 		do {
 			
 			switch (context.getState().toString()) {

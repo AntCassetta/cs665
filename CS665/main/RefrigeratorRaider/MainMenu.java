@@ -1,8 +1,9 @@
-package navigation;
+package RefrigeratorRaider;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import navigation.DataScanner;
 import userProfiles.User;
 
 public class MainMenu implements State {

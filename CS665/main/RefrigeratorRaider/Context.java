@@ -1,4 +1,4 @@
-package navigation;
+package RefrigeratorRaider;
 
 import userProfiles.User;
 
