@@ -48,7 +48,7 @@ public class OOSIterator extends InvIterator<Item>{
 		
 		}//while end
 		
-		System.out.println(OOS.size());
+		//System.out.println(OOS.size());
 		cursor = OOS.first();
 	}//end setToFirst
 

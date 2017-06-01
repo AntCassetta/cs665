@@ -2,6 +2,8 @@ package inventories;
 
 
 import java.util.ArrayList;
+import java.util.Observable;
+
 import RefrigeratorRaider.*;
 import dataStructures.Position;
 
@@ -10,7 +12,7 @@ import dataStructures.Position;
  * 
  * @author anthonycassetta
  */
-public class InventoryManager implements InventoryControl {
+public class InventoryManager extends Observable implements InventoryControl{
 	
 	protected ArrayList<Inventory> inventoryRoster;
 	int nextID = 00;
@@ -124,8 +126,9 @@ public class InventoryManager implements InventoryControl {
 	public void addItem(Inventory givenInventory, String givenItemName, int givenItemQuantity, String givenItemType) {
 		
 		Item newItem = createItem(givenItemName, givenItemQuantity, givenItemType);
-		
 		givenInventory.itemInventory.addLast(newItem);
+		this.setChanged();
+		this.notifyObservers(newItem);
 		
 	}//end addItem
 
@@ -213,6 +216,8 @@ public class InventoryManager implements InventoryControl {
 				if (currentQTY > 0 ) {
 	
 					walk.getElement().setItemQuantity(currentQTY - 1);
+					this.setChanged();
+					this.notifyObservers(walk.getElement());
 					break;
 				
 				} else {
@@ -256,6 +261,8 @@ public class InventoryManager implements InventoryControl {
 				if (givenQTY >= 0 ) {
 	
 					walk.getElement().setItemQuantity(givenQTY);
+					this.setChanged();
+					this.notifyObservers(walk.getElement());
 					break;
 				
 				} else {
