@@ -6,7 +6,7 @@ package inventories;
 /**Item class objects represent real world items to be tracked within inventories. 
  * @author anthonycassetta
  */
-abstract class Item {	
+public abstract class Item {	
 	
 	String itemName;
 	int itemQuantity;
