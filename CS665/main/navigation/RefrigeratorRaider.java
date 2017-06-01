@@ -4,16 +4,41 @@ import java.util.Scanner;
 import userProfiles.User;
 
 public class RefrigeratorRaider {
-
+	
+	private static User activeUser;
+	
 	public static void main(String[] args) {
 		Scanner scan = DataScanner.getDataScanner();
-		User activeUser = LogIn.startLogIn();
+		
+		Context context = new Context();
+		
+		State logIn = new LogIn();
+		State mainMenu = new MainMenu();
+		
+		context.setState(logIn);
+		
+		
 		
 		boolean menuRunning = true;
 		
 		do {
 			
-			MainMenu.dispalyMainMenu(activeUser);
+			switch (context.getState().toString()) {
+			
+			case "LogIn":
+				
+				System.out.println("current State: " + context.getState().toString());
+				logIn.doAction(context);
+				context.setState(mainMenu);
+			
+					
+			
+			case "MainMenu":
+				
+				System.out.println("current State: " + context.getState().toString());
+				mainMenu.doAction(context);
+				
+			}
 			
 			System.out.println("Do you want to continue?");
 			System.out.println("	1. Contune");
