@@ -35,6 +35,12 @@ public interface InventoryControl {
 	public void printContents(Inventory givenInventory);
 	
 	
+	public void printOOS(Inventory givenInventory);
+	
+	
+	public void printEXP(Inventory givenInventory);
+	
+	
 	/**Attempts to create the new item object, upon success, the object will be added to the target inventory provided.
 	 * 
 	 * @param givenInventory ID of the target inventory 

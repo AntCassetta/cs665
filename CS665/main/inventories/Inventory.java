@@ -37,6 +37,12 @@ public abstract class Inventory {
 	public void printContents() { inventoryControl.printContents(this);	}//end printContents
 	
 	
+	public void printOOS() {inventoryControl.printOOS(this);};//end printOOS
+	
+	
+	public void printEXP() {inventoryControl.printEXP(this);};//end printEXP
+	
+	
 	public void addItem (String givenItemName, int givenItemQuantity, String givenItemType) {
 		
 		inventoryControl.addItem(this, givenItemName, givenItemQuantity, givenItemType);

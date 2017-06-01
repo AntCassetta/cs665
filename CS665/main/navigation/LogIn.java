@@ -4,11 +4,11 @@ import java.util.Scanner;
 import userProfiles.User;
 
 
-public class LogIn {	
+public class LogIn implements State{	
 	
-	public static User startLogIn () {
+	public void startLogIn(User givenUser) {
 		
-		User activeUser = User.getInstane();
+		User activeUser = givenUser;
 		
 		Scanner scan = DataScanner.getDataScanner();  // Reading from System.in
 		System.out.println("Please Enter your user Name: ");
@@ -24,7 +24,17 @@ public class LogIn {
 		activeUser.setUserID(inputInt);
 		activeUser.setUserType(inputType);
 		
-		return activeUser;
 	}//end startLogIn
+
+	@Override
+	public void doAction(Context context) {
+		
+		this.startLogIn(context.getUser());	
+	
+	}
+	
+	 public String toString(){
+	      return "LogIn";
+	   }
 
 }// end LogIn

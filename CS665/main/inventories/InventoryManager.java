@@ -85,6 +85,32 @@ public class InventoryManager implements InventoryControl {
 	}//end printContents
 
 	
+	public void printOOS(Inventory givenInventory) {
+		
+		InvIterator<Item> OOSIter = new OOSIterator(givenInventory);
+		OOSIter.setToFirst();
+		
+		while (!OOSIter.isDone()) {
+			
+			Item temp = OOSIter.getCurrentElement();
+			System.out.println("Item: " + temp.getItemName() + " | Qty: " + temp.getItemQuantity());
+			
+			OOSIter.increment();
+			
+		}//end while
+		
+		System.out.println("Total item's out of stock: " + OOSIter.getTotal());
+	
+	}//end printOOS
+	
+	
+	public void printEXP(Inventory givenInventory) {
+		
+		//InvIterator EXPIter = new EXPIterator();
+		System.out.println("Not implimented yet");
+	}
+	
+	
 	/**Attempts to create the new Item object, upon success, the object will be added to the target inventory provided.
 	 * 
 	 * @param givenInventory ID of the target inventory 

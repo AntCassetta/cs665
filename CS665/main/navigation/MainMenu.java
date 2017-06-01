@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 import userProfiles.User;
 
-public class MainMenu {
+public class MainMenu implements State {
 	
-	public static void dispalyMainMenu(User givenUser){
+	public void dispalyMainMenu(User givenUser){
 		
 		Scanner scan = DataScanner.getDataScanner();
 		
@@ -60,4 +60,16 @@ public class MainMenu {
 		}//try-catch end
 	
 	}//end StartMainMenu
+
+	@Override
+	public void doAction(Context context) {
+		
+		this.dispalyMainMenu(context.getUser());
+		
+	}
+	
+	public String toString(){
+	      return "MainMenu";
+	   }
+	
 }
