@@ -6,7 +6,6 @@ import utilities.DataScanner;
 
 public class RefrigeratorRaider {
 	
-	
 	public static void main(String[] args) {
 		//scanner object
 		Scanner scan = DataScanner.getDataScanner();
@@ -35,14 +34,12 @@ public class RefrigeratorRaider {
 				logIn.doAction(context);
 				context.setState(mainMenu);
 			
-					
-			
 			case "MainMenu":
 				
 				System.out.println("current State: " + context.getState().toString());
 				mainMenu.doAction(context);
-				
-			}
+			
+			}//end switch
 			
 			System.out.println("Do you want to continue?");
 			System.out.println("	1. Contune");
@@ -58,7 +55,7 @@ public class RefrigeratorRaider {
 				break;
 			}//end continue/quit switch
 		
-		} while (menuRunning == true);
+		} while (menuRunning == true); //end do while
 		System.out.println("Exiting... GoodBye.");
 		System.exit(0);
 	}//end main
