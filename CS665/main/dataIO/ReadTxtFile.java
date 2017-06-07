@@ -8,6 +8,8 @@ import java.util.Vector;
 import java.util.regex.Pattern;
 //import inventories.Inventory;
 
+import io.ReadFile;
+
 
 class ReadTxtFile implements ReadFile {
 	

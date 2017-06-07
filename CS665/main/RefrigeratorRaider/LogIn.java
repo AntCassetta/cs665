@@ -2,15 +2,15 @@ package RefrigeratorRaider;
 
 import java.util.Scanner;
 
-import userProfiles.User;
+import userProfiles.RaiderUser;
 import utilities.DataScanner;
 
 
 public class LogIn implements State{	
 	
-	public void startLogIn(User givenUser) {
+	public void startLogIn(RaiderUser givenUser) {
 		
-		User activeUser = givenUser;
+		RaiderUser activeUser = givenUser;
 		
 		Scanner scan = DataScanner.getDataScanner();  // Reading from System.in
 		System.out.println("Please Enter your user Name: ");

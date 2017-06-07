@@ -1,6 +1,6 @@
-package dataIO;
+package io;
 
-interface WriteFile {
+public interface WriteFile {
 	
 	public void writeToFile(String givenInvName, int givenInvID, String givenItem, int givenQty);
 

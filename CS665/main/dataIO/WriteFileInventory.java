@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import io.WriteFile;
+
 class WriteFileInventory implements WriteFile {
 
 	private static String fileName;

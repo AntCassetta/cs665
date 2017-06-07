@@ -3,12 +3,12 @@ package RefrigeratorRaider;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import userProfiles.User;
+import userProfiles.RaiderUser;
 import utilities.DataScanner;
 
 public class MainMenu implements State {
 	
-	public void dispalyMainMenu(User givenUser){
+	public void dispalyMainMenu(RaiderUser givenUser){
 		
 		Scanner scan = DataScanner.getDataScanner();
 		

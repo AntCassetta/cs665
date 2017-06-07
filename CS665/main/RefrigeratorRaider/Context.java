@@ -1,10 +1,10 @@
 package RefrigeratorRaider;
 
-import userProfiles.User;
+import userProfiles.RaiderUser;
 
 public class Context {
 	
-	   private User activeUser = User.getInstane();
+	   private RaiderUser activeUser = RaiderUser.getInstane();
 	   
 	   private State state;
 
@@ -20,6 +20,6 @@ public class Context {
 	      return state;
 	   }
 	   
-	   public User getUser(){return activeUser;}
+	   public RaiderUser getUser(){return activeUser;}
 	
 }

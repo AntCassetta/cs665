@@ -1,16 +1,17 @@
 package userProfiles;
 
-public class User {
+
+public class RaiderUser {
 	
-	private static final User instance = new User();
+	private static final RaiderUser instance = new RaiderUser();
 	private long userID;
 	private String userName;
 	private String userType;
 	private enum userLvls {OWNER, BUSINESS, CHARITY, RAIDER }
 	
-	private User(){}
+	private RaiderUser(){}
 	
-	public static User getInstane(){
+	public static RaiderUser getInstane(){
 		return instance;
 	}//end getInstance
 	

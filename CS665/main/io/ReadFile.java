@@ -1,9 +1,9 @@
-package dataIO;
+package io;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-interface ReadFile {
+public interface ReadFile {
 	
 	public void readUserFile(String givenUserName, int givenUserID);
 

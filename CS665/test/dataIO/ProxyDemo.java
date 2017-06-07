@@ -3,6 +3,8 @@ package dataIO;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import io.ReadFile;
+
 public class ProxyDemo {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
