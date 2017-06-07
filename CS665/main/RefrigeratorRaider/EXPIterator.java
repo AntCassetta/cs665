@@ -1,8 +1,9 @@
 package RefrigeratorRaider;
 
 import raiderInventories.RaiderInventory;
+import raiderInventories.RaiderItem;
 
-public class EXPIterator extends InvIterator {
+public class EXPIterator extends InvIterator<RaiderItem> {
 
 	public EXPIterator(RaiderInventory givenInventory) {
 		super(givenInventory);
@@ -28,7 +29,7 @@ public class EXPIterator extends InvIterator {
 	}
 
 	@Override
-	public Object getCurrentElement() {
+	public RaiderItem getCurrentElement() {
 		// TODO Auto-generated method stub
 		return null;
 	}
