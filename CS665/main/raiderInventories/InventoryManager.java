@@ -7,6 +7,8 @@ import java.util.Observable;
 import RefrigeratorRaider.*;
 import dataStructures.Position;
 import inventory.InventoryControl;
+import utilities.InvIterator;
+import utilities.OOSIterator;
 
 
 /**Inventory Manager is the concrete class for mediating the instances of Inventory objects and Item objects.

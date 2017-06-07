@@ -1,4 +1,4 @@
-package RefrigeratorRaider;
+package utilities;
 
 import dataStructures.LinkedPositionalList;
 import dataStructures.Position;

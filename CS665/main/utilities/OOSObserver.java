@@ -1,4 +1,4 @@
-package RefrigeratorRaider;
+package utilities;
 
 import java.util.Observable;
 import java.util.Observer;

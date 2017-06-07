@@ -1,14 +1,14 @@
-package RefrigeratorRaider;
+package utilities;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import RefrigeratorRaider.InvIterator;
-import RefrigeratorRaider.OOSIterator;
 import raiderInventories.InventoryManager;
 import raiderInventories.RaiderItem;
 import raiderInventories.Refrigerator;
+import utilities.InvIterator;
+import utilities.OOSIterator;
 
 public class OOSIteratorTest {
 

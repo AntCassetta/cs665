@@ -1,4 +1,4 @@
-package RefrigeratorRaider;
+package utilities;
 
 import raiderInventories.RaiderInventory;
 import raiderInventories.RaiderItem;
