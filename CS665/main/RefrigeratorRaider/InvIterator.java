@@ -1,10 +1,10 @@
 package RefrigeratorRaider;
 
-import inventories.Inventory;
+import raiderInventories.RaiderInventory;
 
 public abstract class InvIterator<E> {
 	
-	public InvIterator(Inventory givenInventory) {
+	public InvIterator(RaiderInventory givenInventory) {
 		super();
 	}
 
@@ -23,4 +23,4 @@ public abstract class InvIterator<E> {
 	//Return the total number of items
 	public abstract int getTotal();
 	
-}
+}//end InvIterator

@@ -1,4 +1,7 @@
-package inventories;
+package inventory;
+
+import raiderInventories.RaiderInventory;
+import raiderInventories.RaiderItem;
 
 /**Inventory Control is the abstract class for mediating the instances of Inventory objects and Item objects.
  * 
@@ -11,34 +14,34 @@ public interface InventoryControl {
 	/**Assigns an inventory object an InventoryID and stores the object within a list for later reference
 	 * @param newInventory The new inventory object to be assigned an inventoryID and stored.
 	 */
-	public void addInventory(Inventory newInventory);
+	public void addInventory(RaiderInventory newInventory);
 	
 	/**Assigns an inventory object a nick name. Ex: "Kitchen"
 	 * 
 	 * @param givenName a string to assign to the inventories as a nick name
 	 */
-	public void setInventoryName(Inventory givenInventory, String newName);
+	public void setInventoryName(RaiderInventory givenInventory, String newName);
 	
 	
 	/**Removes the given inventory object from the inventoryRoster. This inventoryID is not reclaimed.
 	 * @param givenInventory the inventory object to be removed
 	 */
-	public void removeInventory(Inventory givenInventory);
+	public void removeInventory(RaiderInventory givenInventory);
 	
 	
 	// Inventory manipulators
 	/**Checks if the inventory is empty*/
-	public void isEmpty(Inventory givenInventory);
+	public void isEmpty(RaiderInventory givenInventory);
 	
 	
 	/**Prints contents of the inventory to the console*/
-	public void printContents(Inventory givenInventory);
+	public void printContents(RaiderInventory givenInventory);
 	
 	
-	public void printOOS(Inventory givenInventory);
+	public void printOOS(RaiderInventory givenInventory);
 	
 	
-	public void printEXP(Inventory givenInventory);
+	public void printEXP(RaiderInventory givenInventory);
 	
 	
 	/**Attempts to create the new item object, upon success, the object will be added to the target inventory provided.
@@ -47,7 +50,7 @@ public interface InventoryControl {
 	 * @param givenItemName name of the item to be created
 	 * @param GivenitemQuantity quantity of the item to be added
 	 */
-	public void addItem(Inventory givenInventory, String givenItemName, int givenItemQuantity, String givenItemType);
+	public void addItem(RaiderInventory givenInventory, String givenItemName, int givenItemQuantity, String givenItemType);
 	
 	
 	/**Locates and removes an Item object from the inventory.
@@ -55,7 +58,7 @@ public interface InventoryControl {
 	 * @param givenInventory ID of the target inventory 
 	 * @param givenItemName name of the item to be removed
 	 */
-	public void removeItem(Inventory givenInventory, String givenItemName);
+	public void removeItem(RaiderInventory givenInventory, String givenItemName);
 	
 	
 	/**Locates the given item's position and increments the items quantity by 1 unit.
@@ -64,7 +67,7 @@ public interface InventoryControl {
 	 * @param givenInventory ID of the target inventory 
 	 * @param givenItemName name of the item to be altered
 	 */
-	public void incrementItem(Inventory givenInventory, String givenItemName);
+	public void incrementItem(RaiderInventory givenInventory, String givenItemName);
 	
 	
 	/**Locates the given item's position and decrements the items quantity by 1 unit.
@@ -73,7 +76,7 @@ public interface InventoryControl {
 	 * @param givenInventory ID of the target inventory 
 	 * @param givenItemName name of the item to be altered
 	 */
-	public void decrementItem(Inventory givenInventory, String givenItemName);
+	public void decrementItem(RaiderInventory givenInventory, String givenItemName);
 	
 	
 	/**Locates the given item's position and updates the quantity to the given value. 
@@ -83,7 +86,7 @@ public interface InventoryControl {
 	 * @param givenItemName name of the item to be altered
 	 * @param GivenitemQuantity the new value to be assigned to quantity 
 	 */
-	public void updateItemQuantity(Inventory givenInventory, String givenItemName, int givenItemQuantity);
+	public void updateItemQuantity(RaiderInventory givenInventory, String givenItemName, int givenItemQuantity);
 	
 	
 	//Item manipulators
@@ -92,7 +95,7 @@ public interface InventoryControl {
 	 * @param givenItemName name of the object to be created
 	 * @param givenItemQuantity initial quantity of the object
 	 */
-	public Item createItem(String givenItemName, int givenItemQuantity, String givenItemType);
+	public RaiderItem createItem(String givenItemName, int givenItemQuantity, String givenItemType);
 
 		
 }//end InventoryControl

@@ -5,11 +5,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-class WriteFileInventory {
+class WriteFileInventory implements WriteFile {
 
 	private static String fileName;
 
-	protected static void writeToFile (String givenInvName, int givenInvID, String givenItem, int givenQty) {
+	public void writeToFile (String givenInvName, int givenInvID, String givenItem, int givenQty) {
 		
 		fileName = givenInvName + String.format("%02d",givenInvID) +".txt";
 		BufferedWriter bw = null;
@@ -60,10 +60,4 @@ class WriteFileInventory {
 
 	}//end writeToFile
 	
-	public static void main(String[]args){
-		WriteFileInventory.writeToFile("TestFridge", 01, "Milk", 2);
-		
-		WriteFileInventory.writeToFile("TestFridge", 01, "Cheese", 1);
-		WriteFileInventory.writeToFile("TestFridge", 01, "Eggs", 6);
-	}
 }//end WriteFile

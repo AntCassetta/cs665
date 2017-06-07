@@ -1,10 +1,10 @@
 package RefrigeratorRaider;
 
-import inventories.Inventory;
+import raiderInventories.RaiderInventory;
 
 public class EXPIterator extends InvIterator {
 
-	public EXPIterator(Inventory givenInventory) {
+	public EXPIterator(RaiderInventory givenInventory) {
 		super(givenInventory);
 		// TODO Auto-generated constructor stub
 	}

@@ -1,4 +1,7 @@
-package inventories;
+package raiderInventories;
+
+import raiderInventories.InventoryManager;
+import raiderInventories.Refrigerator;
 
 public class demoAddDecrement {
 	

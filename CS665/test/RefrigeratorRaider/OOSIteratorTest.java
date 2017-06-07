@@ -6,9 +6,9 @@ import org.junit.Test;
 
 import RefrigeratorRaider.InvIterator;
 import RefrigeratorRaider.OOSIterator;
-import inventories.InventoryManager;
-import inventories.Item;
-import inventories.Refrigerator;
+import raiderInventories.InventoryManager;
+import raiderInventories.RaiderItem;
+import raiderInventories.Refrigerator;
 
 public class OOSIteratorTest {
 
@@ -25,10 +25,10 @@ public class OOSIteratorTest {
 		testFridge.addItem("eggs", 0, "Meat");
 		
 		
-		InvIterator<Item> it = new OOSIterator(testFridge);
+		InvIterator<RaiderItem> it = new OOSIterator(testFridge);
 		
 		it.setToFirst();
-		Item currentIt = it.getCurrentElement();
+		RaiderItem currentIt = it.getCurrentElement();
 		
 		//assert statements
 		assertEquals(7, testFridge.getItemInv().size());

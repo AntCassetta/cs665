@@ -1,6 +1,6 @@
-package inventories;
+package raiderInventories;
 
-public class ItemMisc extends Item{
+public class ItemMisc extends RaiderItem{
 
 	public ItemMisc(String givenItemName, int givenItemQuantity, String givenItemType) {
 		super(givenItemName, givenItemQuantity, givenItemType);

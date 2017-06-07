@@ -1,9 +1,9 @@
-package inventories;
+package raiderInventories;
 
 /**Dairy objects are Item subclass class objects represent real world items to be tracked within inventories. 
  * @author anthonycassetta
  */
-public class ItemDairy extends Item{
+public class ItemDairy extends RaiderItem{
 	
 	/**constructor for Diary objects
 	 * @param givenItemName string name the item will be initialized with.

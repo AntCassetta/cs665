@@ -1,10 +1,10 @@
-package inventories;
+package raiderInventories;
 
 public class ItemFactory {
 	
 	protected enum category {DAIRY, MEAT, PRODUCE, MISC};
 	
-	public Item getItem(String givenItemName, int givenItemQuantity, String givenItemType) {
+	public RaiderItem getItem(String givenItemName, int givenItemQuantity, String givenItemType) {
 		
 		//System.out.println("Going through the factory!");
 		

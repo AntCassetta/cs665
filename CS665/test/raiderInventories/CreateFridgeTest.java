@@ -1,8 +1,11 @@
-package inventories;
+package raiderInventories;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import raiderInventories.InventoryManager;
+import raiderInventories.Refrigerator;
 
 public class CreateFridgeTest {
 

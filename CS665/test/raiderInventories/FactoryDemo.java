@@ -1,4 +1,8 @@
-package inventories;
+package raiderInventories;
+
+import raiderInventories.InventoryManager;
+import raiderInventories.RaiderItem;
+import raiderInventories.Refrigerator;
 
 public class FactoryDemo {
 
@@ -21,7 +25,7 @@ public class FactoryDemo {
 		
 		kitchen.printContents();
 		
-		for(Item i: kitchen.itemInventory){
+		for(RaiderItem i: kitchen.itemInventory){
 			System.out.println(i.getItemName() + " is an instance of "+ i.getClass() + "\n");
 		}//end for
 

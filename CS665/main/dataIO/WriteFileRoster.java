@@ -5,11 +5,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-class WriteFileRoster {
+class WriteFileRoster implements WriteFile{
 
 	private static String fileName;
 
-	protected static void writeToFile (String givenInvName, int givenInvID, String givenItem, int givenQty) {
+	public void writeToFile (String givenInvName, int givenInvID, String givenItem, int givenQty) {
 		
 		//TODO this will need to take a UserID and read in/ create their inventories.
 		
@@ -62,10 +62,4 @@ class WriteFileRoster {
 
 	}//end writeToFile
 	
-	public static void main(String[]args){
-		WriteFileRoster.writeToFile("TestFridge", 01, "Milk", 2);
-		
-		WriteFileRoster.writeToFile("TestFridge", 01, "Cheese", 1);
-		WriteFileRoster.writeToFile("TestFridge", 01, "Eggs", 6);
-	}
 }//end WriteFile

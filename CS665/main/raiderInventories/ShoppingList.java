@@ -1,6 +1,8 @@
-package inventories;
+package raiderInventories;
 
-public class ShoppingList extends Inventory{
+import inventory.InventoryControl;
+
+public class ShoppingList extends RaiderInventory{
 
 	public ShoppingList(InventoryControl newInventoryControl, String nickName) {
 		super(newInventoryControl, nickName);

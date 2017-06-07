@@ -19,7 +19,7 @@ public class LogIn implements State{
 		System.out.println("Please Enter your user ID: ");
 		int inputInt = scan.nextInt();
 		
-		System.out.println("Please Enter your user Type (Owner or Raider): ");
+		System.out.println("Please Enter your user Type (Owner, Raider, Business, Charity): ");
 		String inputType = scan.next();
 		
 		activeUser.setUserName(inputName);

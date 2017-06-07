@@ -1,10 +1,13 @@
-package inventories;
+package raiderInventories;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class decrementItemTest {
+import raiderInventories.InventoryManager;
+import raiderInventories.Refrigerator;
+
+public class AddItemTest {
 
 	@Test
 	public void test() {
@@ -17,8 +20,6 @@ public class decrementItemTest {
 		assertEquals(1, testFridge.itemInventory.size());
 		assertEquals("Milk", testFridge.itemInventory.first().getElement().getItemName());
 		assertEquals(2, testFridge.itemInventory.first().getElement().getItemQuantity());
-		testFridge.decrementItem("Milk");
-		assertEquals(1, testFridge.itemInventory.first().getElement().getItemQuantity());
 	}
 
 }

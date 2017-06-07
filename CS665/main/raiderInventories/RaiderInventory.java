@@ -1,16 +1,18 @@
-package inventories;
+package raiderInventories;
 import dataStructures.LinkedPositionalList;
+import inventory.InventoryControl;
+import inventory.Inventory;
 
-public abstract class Inventory {
+public abstract class RaiderInventory implements Inventory<RaiderItem>{
 	
 	private InventoryControl inventoryControl;
 	private int inventoryID;
 	private String inventoryName;
 	//private int totalItems = 0;
 	//private int totalOOS = 0;
-	protected LinkedPositionalList<Item> itemInventory = new LinkedPositionalList<Item>();
+	protected LinkedPositionalList<RaiderItem> itemInventory = new LinkedPositionalList<RaiderItem>();
 	
-	public Inventory(InventoryControl newInventoryControl, String nickName){
+	public RaiderInventory(InventoryControl newInventoryControl, String nickName){
 		
 		inventoryControl = newInventoryControl;
 		inventoryControl.addInventory(this);
@@ -31,7 +33,7 @@ public abstract class Inventory {
 	public String getInventoryName() { return inventoryName; }//end getInventoryName
 	
 	
-	public LinkedPositionalList<Item> getItemInv() { return itemInventory; }//end getItemInv 
+	public LinkedPositionalList<RaiderItem> getItemInv() { return itemInventory; }//end getItemInv 
 	
 	
 	public void isEmpty(){ inventoryControl.isEmpty(this); }//end isEmpty

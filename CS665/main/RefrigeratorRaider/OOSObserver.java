@@ -2,7 +2,8 @@ package RefrigeratorRaider;
 
 import java.util.Observable;
 import java.util.Observer;
-import inventories.Item;
+
+import raiderInventories.RaiderItem;
 
 public class OOSObserver extends InventoryObserver implements Observer {
 	
@@ -10,14 +11,14 @@ public class OOSObserver extends InventoryObserver implements Observer {
 	 
 	public static OOSObserver getOOSObserver(){
 		return theOOSObserver;
-	}
+	}//end getOOSObserver
 
 	@Override
 	public void update(Observable o, Object arg) {
 		
-		if ( ((Item) arg).getItemQuantity() == 0) {
-			System.out.println("You've just run out of " + ((Item) arg).getItemName() );
-		}
-	}
+		if ( ((RaiderItem) arg).getItemQuantity() == 0) {
+			System.out.println("You've just run out of " + ((RaiderItem) arg).getItemName() );
+		}//end if
+	}//end update
 
-}
+}//end OOSObserver
