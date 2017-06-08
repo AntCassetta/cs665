@@ -19,10 +19,20 @@ public class MainMenu implements State {
 		switch (givenUser.getUserType()) {
 			
 			case "OWNER":
-			System.out.println("Fridge Owner options:" );
+				System.out.println("Fridge Owner options:" );
+				break;
 			
 			case "RAIDER":
-				System.out.println("Fridge Owner options:");
+				System.out.println("Fridge Raider options:");
+				break;
+				
+			case "BUSINESS":
+				System.out.println("Business Fridge options:");
+				break;
+				
+			case "CHARITY":
+				System.out.println("Charity Fridge options:");
+				break;
 		}//end user level switch
 		
 		System.out.println("	1. Display Refrigerator Contents");

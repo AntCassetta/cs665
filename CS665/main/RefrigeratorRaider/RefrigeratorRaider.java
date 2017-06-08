@@ -29,10 +29,19 @@ public class RefrigeratorRaider {
 			switch (context.getState().toString()) {
 			
 			case "LogIn":
-				
+					
 				System.out.println("current State: " + context.getState().toString());
 				logIn.doAction(context);
-				context.setState(mainMenu);
+				
+				
+				if (context.getUser().getUserType() == null) {
+					
+					break;
+				
+				} else {
+					
+					context.setState(mainMenu);
+				}
 			
 			case "MainMenu":
 				

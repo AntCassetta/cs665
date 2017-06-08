@@ -2,16 +2,17 @@ package io;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Vector;
 
 public interface ReadFile {
 	
-	public void readUserFile(String givenUserName, int givenUserID);
+	public Vector<String> readUserFile(String givenUserName, int givenUserID, String givenUserType);
 
 	
-	public void readRosterFile(String userName, int userID);
+	public Vector<String> readRosterFile(String userName, int userID);
 
 
-	public void readInventoryFile(String givenInvName, int givenInvID) throws IOException, FileNotFoundException;
+	public Vector<String> readInventoryFile(String givenInvName, int givenInvID) throws IOException, FileNotFoundException;
 	
 	
 }//end ReadFile

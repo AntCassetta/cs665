@@ -1,3 +1,5 @@
-Milk,2
-Cheese,1
-Eggs,6
+Milk,2,dairy
+Cheese,1,dairy
+Eggs,6,meat
+Apple,2,Produce
+tooth paste,1,Misc

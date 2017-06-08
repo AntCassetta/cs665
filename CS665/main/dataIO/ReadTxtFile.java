@@ -17,7 +17,7 @@ class ReadTxtFile implements ReadFile {
 	private Vector<String> userRoster = new Vector<String>();
 	private Vector<String> userInventory = new Vector<String>();
 	
-	public void readUserFile(String givenUserName, int givenUserID) {
+	public Vector<String> readUserFile(String givenUserName, int givenUserID, String givenUserType) {
 		
 		// The name of the file to open.
         String fileName = "UserList.txt";
@@ -39,14 +39,12 @@ class ReadTxtFile implements ReadFile {
             	while (line != null) {
             		String[] lineValues = line.split(Pattern.quote(","));
             		//sanity check of line values.
-            		if(lineValues[0].equals(givenUserName) && Integer.parseInt(lineValues[1]) == givenUserID) {
+            		if(lineValues[0].equals(givenUserName) && Integer.parseInt(lineValues[1]) == givenUserID && lineValues[2].equals(givenUserType.toUpperCase())) {
             			
             			for(String I: lineValues){
             				userCandidate.add(I);
             			}
             		}//end if 
-            		
-            		//System.out.println("Matching user: "+ lineValues[0] + " ID: " + lineValues[1] + " Level: " + lineValues[2]); //+ lineValues[1]);
             		
             		line = bufferedReader.readLine();
             	}//end if
@@ -67,10 +65,11 @@ class ReadTxtFile implements ReadFile {
         	
         }// end try catch
     
+        return userCandidate;
 	}//end readUserFile
 	
 
-	public void readRosterFile(String givenUserName, int givenUserID) {
+	public Vector<String> readRosterFile(String givenUserName, int givenUserID) {
 		
 		// The name of the file to open.
         String fileName = givenUserName + String.format("%02d",givenUserID) + ".txt";
@@ -114,11 +113,12 @@ class ReadTxtFile implements ReadFile {
         	System.out.println("Error reading file '" + fileName + "'");
         	
         }// end try catch
-    
+        
+    return userRoster;
 	}//endRosterFile
 	
 	
-	public void readInventoryFile(String givenInvName, int givenInvID) 
+	public Vector<String> readInventoryFile(String givenInvName, int givenInvID) 
 			throws IOException, FileNotFoundException {
 
 		// The name of the file to open.
@@ -164,6 +164,7 @@ class ReadTxtFile implements ReadFile {
 		System.out.println("Error reading file '" + fileName + "'");
 		
 		}// end try catch
+		return userInventory;
 
 	}//end readInventoryFile
 

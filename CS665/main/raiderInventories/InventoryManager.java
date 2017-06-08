@@ -4,7 +4,6 @@ package raiderInventories;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import RefrigeratorRaider.*;
 import dataStructures.Position;
 import inventory.InventoryControl;
 import utilities.InvIterator;
