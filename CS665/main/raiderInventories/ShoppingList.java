@@ -9,5 +9,9 @@ public class ShoppingList extends RaiderInventory{
 		
 		System.out.println("Shopping list " + this.getInventoryID() +  " \""+this.getInventoryName() + "\" has been created.");
 	}
+	
+	public String toString() {
+		return "ShoppingList";
+	};
 
 }//end ShoppingList

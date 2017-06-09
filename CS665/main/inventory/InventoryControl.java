@@ -4,7 +4,6 @@ import raiderInventories.RaiderInventory;
 import raiderInventories.RaiderItem;
 
 /**Inventory Control is the abstract class for mediating the instances of Inventory objects and Item objects.
- * 
  * @author anthonycassetta
  */
 

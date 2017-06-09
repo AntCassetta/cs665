@@ -21,8 +21,8 @@ public class InventoryManager extends Observable implements InventoryControl{
 
 	
 	/**Constructs an InventoryManager object*/
-	private InventoryManager(){
-		inventoryRoster = new ArrayList<RaiderInventory>();
+	private InventoryManager() {
+		this.inventoryRoster = new ArrayList<RaiderInventory>();
 	}//end constructor
 	
 	
@@ -31,6 +31,9 @@ public class InventoryManager extends Observable implements InventoryControl{
 	 * @return the singleton instance of the InventoryManager
 	 */
 	public static InventoryManager getInstance(){ return instance; }
+	
+	
+	public ArrayList<RaiderInventory> getInventoryRoster() {return inventoryRoster;}
 	
 	
 	/**Assigns an inventory object an InventoryID and stores the object within a list for later reference
@@ -50,10 +53,9 @@ public class InventoryManager extends Observable implements InventoryControl{
 		case "SHOPPINGLIST":
 			newInventory = new ShoppingList(this, nickName, inventoryID);
 			break;
-		
 		}//end switch
 		
-		inventoryRoster.add(newInventory);
+		this.inventoryRoster.add(newInventory);
 		nextID++;
 		//newInventory.setInventoryID(nextID);
 		return newInventory;

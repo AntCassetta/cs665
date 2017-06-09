@@ -84,5 +84,8 @@ public abstract class RaiderInventory implements Inventory<RaiderItem>{
 	
 	}//end updateItemQuantity
 	
+	public String toString() {
+		return "RaiderInventory";
+	};
 	
 }//end Inventory

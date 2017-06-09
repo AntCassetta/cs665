@@ -11,4 +11,9 @@ public class Refrigerator extends RaiderInventory{
 		System.out.println("Refrigerator " + this.getInventoryID() + " \""+this.getInventoryName() + "\" has been created.");
 	}
 	
+	@Override
+	public String toString() {
+		return "Refrigerator";
+	};
+	
 }//end refrigerator

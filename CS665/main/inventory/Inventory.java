@@ -46,6 +46,8 @@ public interface Inventory<E> {
 	
 	public void updateItemQuantity(String givenItemName, int givenItemQuantity);
 	
+	public String toString();
+	
 	
 }//end Inventory
 

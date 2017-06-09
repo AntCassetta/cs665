@@ -35,13 +35,12 @@ public class RefrigeratorRaider {
 				
 				
 				if (context.getUser().getUserType() == null) {
-					
-					break;
 				
+					break;
 				} else {
 					
 					context.setState(mainMenu);
-				}
+				}//end if else
 			
 			case "MainMenu":
 				

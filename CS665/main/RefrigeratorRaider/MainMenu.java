@@ -9,11 +9,11 @@ import utilities.DataScanner;
 public class MainMenu implements State {
 	
 	InventoryManager Manager = InventoryManager.getInstance();
+	//ArrayList<RaiderInventory> Roster = Manager.getInventoryRoster();
 	
 	public void dispalyMainMenu(RaiderUser givenUser) {
 		
 		Scanner scan = DataScanner.getDataScanner();
-		
 		
 		System.out.println("\nRefrigerator Raider Main Menu");
 		System.out.println("Please choose an number option:");
@@ -53,17 +53,15 @@ public class MainMenu implements State {
 	
 				switch (menuSel){
 					case 1: 
-						System.out.println("Now I'll show Fridge contents");
+						System.out.println("One day I'll print your Refrigerator contents");
 						
+						//TODO implement a system to pick between multiple Refrigerators
 						break;
 	
 					case 2: 
-						System.out.println("Now I'll show Shopping List contents");
-						break;
 						
-					//case 3:
-						//System.out.println("Exiting... GoodBye.");
-						//break;
+						System.out.println("One day I'll print your ShoppingList");
+						break;
 						
 				}//end Switch
 	

@@ -42,8 +42,9 @@ public class LogIn implements State{
 		activeUser.setUserName(candidate.get(0));
 		activeUser.setUserID(Integer.parseInt(candidate.get(1)));
 		activeUser.setUserType(candidate.get(2));
-		
 		}//end if else
+		
+		loadRoster(activeUser);
 		
 	}//end startLogIn
 
@@ -60,7 +61,8 @@ public class LogIn implements State{
 		for (String I : roster) {
 		
 		rosterLine = I.split(Pattern.quote(","));
-		//TODO must pass each rosterLine to InventoryManager for creation.
+		Manager.addInventory(rosterLine[0], Long.parseLong(rosterLine[1].trim()), rosterLine[2]);
+
 		}//end for
 	
 	}//end loadRoster
