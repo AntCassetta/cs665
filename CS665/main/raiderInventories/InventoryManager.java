@@ -26,6 +26,10 @@ public class InventoryManager extends Observable implements InventoryControl{
 	}//end constructor
 	
 	
+	/** returns the singleton instance of the InventoryManager
+	 * 
+	 * @return the singleton instance of the InventoryManager
+	 */
 	public static InventoryManager getInstance(){ return instance; }
 	
 	
@@ -57,6 +61,12 @@ public class InventoryManager extends Observable implements InventoryControl{
 	}//end addInventory
 	
 	
+	/**Finds and returns an inventory based on matching the nick name and ID number.
+	 * 
+	 * @param nickName name assigned to the target inventory
+	 * @param inventoryID ID number assigned to the target inventory
+	 * @return The target inventory if found, null otherwise
+	 */
 	public RaiderInventory getInventory(String nickName, long inventoryID) {
 		
 		RaiderInventory targetInventory = null;
@@ -78,6 +88,7 @@ public class InventoryManager extends Observable implements InventoryControl{
 		return targetInventory;
 
 	}//end getInventory
+	
 	
 	/**Assigns an inventory object a nick name. Ex: "Kitchen"
 	 * 
