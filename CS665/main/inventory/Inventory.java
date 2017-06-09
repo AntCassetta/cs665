@@ -11,7 +11,7 @@ public interface Inventory<E> {
 	public void setInventoryName(String givenName);
 	
 	
-	public int getInventoryID();
+	public long getInventoryID();
 	
 	
 	public String getInventoryName();

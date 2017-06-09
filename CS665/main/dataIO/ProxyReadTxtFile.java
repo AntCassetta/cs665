@@ -21,7 +21,7 @@ public class ProxyReadTxtFile implements ReadFile {
 	}
 
 	@Override
-	public Vector<String> readUserFile(String givenUserName, int givenUserID, String givenUserType) {
+	public Vector<String> readUserFile(String givenUserName, long givenUserID, String givenUserType) {
 		if (userCandidate == null) {
 			
 			readTextFile.readUserFile(givenUserName, givenUserID, givenUserType);
@@ -42,7 +42,7 @@ public class ProxyReadTxtFile implements ReadFile {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Vector<String> readRosterFile(String givenUserName, int givenUserID) {
+	public Vector<String> readRosterFile(String givenUserName, long givenUserID) {
 		
 		if (userRoster == null) {
 			readTextFile.readRosterFile(givenUserName, givenUserID);
@@ -60,7 +60,7 @@ public class ProxyReadTxtFile implements ReadFile {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Vector<String> readInventoryFile(String givenInvName, int givenInvID) throws IOException, FileNotFoundException {
+	public Vector<String> readInventoryFile(String givenInvName, long givenInvID) throws IOException, FileNotFoundException {
 		if (userInventory == null){
 			readTextFile.readInventoryFile(givenInvName, givenInvID);
 			userInventory = readTextFile.getUserInventory();

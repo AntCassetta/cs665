@@ -5,14 +5,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import raiderInventories.InventoryManager;
-import raiderInventories.Refrigerator;
 
 public class UpdateItemTest {
 
 	@Test
 	public void test() {
-		InventoryManager testManager = new InventoryManager();
-		Refrigerator testFridge = new Refrigerator(testManager, "test Fridge");
+		InventoryManager testManager = InventoryManager.getInstance();
+		RaiderInventory testFridge = testManager.getInventory("testFridge", 1);
 		testFridge.addItem("Milk", 2, "Dairy");
 		
 		
@@ -22,6 +21,8 @@ public class UpdateItemTest {
 		assertEquals(2, testFridge.itemInventory.first().getElement().getItemQuantity());
 		testFridge.updateItemQuantity("Milk", 5);
 		assertEquals(5, testFridge.itemInventory.first().getElement().getItemQuantity());
+		
+		while (testFridge.itemInventory.size() > 0 ) {testFridge.itemInventory.remove(testFridge.itemInventory.first());}
 	}
 
 }

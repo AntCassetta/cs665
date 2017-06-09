@@ -6,16 +6,18 @@ import inventory.Inventory;
 public abstract class RaiderInventory implements Inventory<RaiderItem>{
 	
 	private InventoryControl inventoryControl;
-	private int inventoryID;
+	private long inventoryID;
 	private String inventoryName;
 	//private int totalItems = 0;
 	//private int totalOOS = 0;
 	protected LinkedPositionalList<RaiderItem> itemInventory = new LinkedPositionalList<RaiderItem>();
 	
-	public RaiderInventory(InventoryControl newInventoryControl, String nickName){
+	public RaiderInventory (InventoryControl newInventoryControl,
+							String nickName, long givenInventoryID) {
 		
 		inventoryControl = newInventoryControl;
-		inventoryControl.addInventory(this);
+		inventoryID = givenInventoryID;
+		//inventoryControl.addInventory(this);
 		inventoryControl.setInventoryName(this, nickName);
 		
 	}//end constructor
@@ -27,7 +29,7 @@ public abstract class RaiderInventory implements Inventory<RaiderItem>{
 	public void setInventoryName(String givenName) {inventoryName = givenName;} // end setInventoryName
 	
 	
-	public int getInventoryID() { return inventoryID; }//end getInventoryID
+	public long getInventoryID() { return inventoryID; }//end getInventoryID
 	
 	
 	public String getInventoryName() { return inventoryName; }//end getInventoryName

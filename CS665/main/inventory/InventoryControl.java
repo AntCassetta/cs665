@@ -14,7 +14,7 @@ public interface InventoryControl {
 	/**Assigns an inventory object an InventoryID and stores the object within a list for later reference
 	 * @param newInventory The new inventory object to be assigned an inventoryID and stored.
 	 */
-	public void addInventory(RaiderInventory newInventory);
+	public RaiderInventory addInventory(String nickName, long inventoryID, String classType);
 	
 	/**Assigns an inventory object a nick name. Ex: "Kitchen"
 	 * 

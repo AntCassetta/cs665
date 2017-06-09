@@ -17,7 +17,7 @@ class ReadTxtFile implements ReadFile {
 	private Vector<String> userRoster = new Vector<String>();
 	private Vector<String> userInventory = new Vector<String>();
 	
-	public Vector<String> readUserFile(String givenUserName, int givenUserID, String givenUserType) {
+	public Vector<String> readUserFile(String givenUserName, long givenUserID, String givenUserType) {
 		
 		// The name of the file to open.
         String fileName = "UserList.txt";
@@ -69,7 +69,7 @@ class ReadTxtFile implements ReadFile {
 	}//end readUserFile
 	
 
-	public Vector<String> readRosterFile(String givenUserName, int givenUserID) {
+	public Vector<String> readRosterFile(String givenUserName, long givenUserID) {
 		
 		// The name of the file to open.
         String fileName = givenUserName + String.format("%02d",givenUserID) + ".txt";
@@ -118,7 +118,7 @@ class ReadTxtFile implements ReadFile {
 	}//endRosterFile
 	
 	
-	public Vector<String> readInventoryFile(String givenInvName, int givenInvID) 
+	public Vector<String> readInventoryFile(String givenInvName, long givenInvID) 
 			throws IOException, FileNotFoundException {
 
 		// The name of the file to open.

@@ -4,8 +4,8 @@ import inventory.InventoryControl;
 
 public class ShoppingList extends RaiderInventory{
 
-	public ShoppingList(InventoryControl newInventoryControl, String nickName) {
-		super(newInventoryControl, nickName);
+	public ShoppingList(InventoryControl newInventoryControl, String nickName, long givenInventoryID) {
+		super(newInventoryControl, nickName, givenInventoryID);
 		
 		System.out.println("Shopping list " + this.getInventoryID() +  " \""+this.getInventoryName() + "\" has been created.");
 	}

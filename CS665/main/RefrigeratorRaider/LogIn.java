@@ -2,9 +2,11 @@ package RefrigeratorRaider;
 
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.regex.Pattern;
 
 import dataIO.ProxyReadTxtFile;
 import io.ReadFile;
+import raiderInventories.InventoryManager;
 import userProfiles.RaiderUser;
 import utilities.DataScanner;
 
@@ -12,12 +14,14 @@ import utilities.DataScanner;
 public class LogIn implements State{
 	
 	private Vector<String> candidate;
+	private Vector<String> roster;
+	private ReadFile readUserFile = new ProxyReadTxtFile();
+	InventoryManager Manager = InventoryManager.getInstance();
+	
 	
 	public void startLogIn(RaiderUser givenUser) {
 		
 		RaiderUser activeUser = givenUser;
-		ReadFile readUserFile = new ProxyReadTxtFile();
-		
 		
 		Scanner scan = DataScanner.getDataScanner();  // Reading from System.in
 		System.out.println("Please Enter your user Name: ");
@@ -39,7 +43,7 @@ public class LogIn implements State{
 		activeUser.setUserID(Integer.parseInt(candidate.get(1)));
 		activeUser.setUserType(candidate.get(2));
 		
-		}
+		}//end if else
 		
 	}//end startLogIn
 
@@ -48,7 +52,19 @@ public class LogIn implements State{
 		
 		this.startLogIn(context.getUser());	
 	
-	}
+	}//end doAction
+	
+	public void loadRoster(RaiderUser givenUser) {
+		String[] rosterLine;
+		roster = readUserFile.readRosterFile(givenUser.getUserName(), givenUser.getUserID());
+		for (String I : roster) {
+		
+		rosterLine = I.split(Pattern.quote(","));
+		//TODO must pass each rosterLine to InventoryManager for creation.
+		}//end for
+	
+	}//end loadRoster
+	
 	
 	 public String toString(){
 		 return "LogIn"; 

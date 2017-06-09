@@ -1,7 +1,6 @@
 package raiderInventories;
 
 import raiderInventories.InventoryManager;
-import raiderInventories.Refrigerator;
 
 public class demoAddDecrement {
 	
@@ -11,9 +10,9 @@ public class demoAddDecrement {
 				+ "-Let's create Refrigerators \"Kitchen\", \"Pool House\"\n"
 				+ "-and ShoppingList \"Market List\".\n");
 		
-		InventoryManager InvMaster = new InventoryManager();
+		InventoryManager InvMaster = InventoryManager.getInstance();
 		
-		Refrigerator kitchen = new Refrigerator(InvMaster, "Kitchen");
+		RaiderInventory kitchen = InvMaster.addInventory("Kitchen", 02, "Refrigerator");
 		//Refrigerator poolHouse = new Refrigerator(InvMaster, "Pool House");
 		//ShoppingList marketList = new ShoppingList(InvMaster, "Market List");
 		

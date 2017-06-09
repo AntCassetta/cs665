@@ -1,9 +1,8 @@
 package raiderInventories;
 
-
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
-
 import dataStructures.Position;
 import inventory.InventoryControl;
 import utilities.InvIterator;
@@ -16,27 +15,69 @@ import utilities.OOSIterator;
  */
 public class InventoryManager extends Observable implements InventoryControl{
 	
+	private static final InventoryManager instance = new InventoryManager();
 	protected ArrayList<RaiderInventory> inventoryRoster;
 	int nextID = 00;
 
 	
 	/**Constructs an InventoryManager object*/
-	public InventoryManager(){
+	private InventoryManager(){
 		inventoryRoster = new ArrayList<RaiderInventory>();
 	}//end constructor
+	
+	
+	public static InventoryManager getInstance(){ return instance; }
 	
 	
 	/**Assigns an inventory object an InventoryID and stores the object within a list for later reference
 	 * @param newInventory The new inventory object to be assigned an inventoryID and stored.
 	 */
-	public void addInventory(RaiderInventory newInventory) {
+	public RaiderInventory addInventory(String nickName, long inventoryID, String classType) {
+		//TODO addInventory must create and add the inventoryGiven
+		
+		RaiderInventory newInventory = null;
+		
+		switch (classType.toUpperCase()) {
+		
+		case "REFRIGERATOR":
+			newInventory = new Refrigerator(this, nickName, inventoryID);
+			break;
+		
+		case "SHOPPINGLIST":
+			newInventory = new ShoppingList(this, nickName, inventoryID);
+			break;
+		
+		}//end switch
 		
 		inventoryRoster.add(newInventory);
 		nextID++;
-		newInventory.setInventoryID(nextID);
+		//newInventory.setInventoryID(nextID);
+		return newInventory;
 		
 	}//end addInventory
 	
+	
+	public RaiderInventory getInventory(String nickName, long inventoryID) {
+		
+		RaiderInventory targetInventory = null;
+		Iterator<RaiderInventory> iter = inventoryRoster.iterator();
+		 RaiderInventory cursor;
+		 
+		 while (iter.hasNext()) {
+			 
+			 cursor = iter.next();
+			  if (cursor.getInventoryName().equals(nickName) && (long) cursor.getInventoryID() == (long)inventoryID ) {
+				  targetInventory = cursor;
+				  System.out.println(cursor.getInventoryID());
+				  System.out.println("Found Inventory");
+				  break;
+			  }//end if
+		
+		 }//end while
+
+		return targetInventory;
+
+	}//end getInventory
 	
 	/**Assigns an inventory object a nick name. Ex: "Kitchen"
 	 * 
@@ -92,6 +133,7 @@ public class InventoryManager extends Observable implements InventoryControl{
 	}//end printContents
 
 	
+	/**Prints all OOS contents of the inventory to the console*/
 	public void printOOS(RaiderInventory givenInventory) {
 		
 		InvIterator<RaiderItem> OOSIter = new OOSIterator(givenInventory);
@@ -111,6 +153,7 @@ public class InventoryManager extends Observable implements InventoryControl{
 	}//end printOOS
 	
 	
+	/**Prints all EXP contents of the inventory to the console*/
 	public void printEXP(RaiderInventory givenInventory) {
 		
 		//InvIterator EXPIter = new EXPIterator();

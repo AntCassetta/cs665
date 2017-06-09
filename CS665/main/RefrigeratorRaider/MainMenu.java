@@ -2,13 +2,15 @@ package RefrigeratorRaider;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+import raiderInventories.InventoryManager;
 import userProfiles.RaiderUser;
 import utilities.DataScanner;
 
 public class MainMenu implements State {
 	
-	public void dispalyMainMenu(RaiderUser givenUser){
+	InventoryManager Manager = InventoryManager.getInstance();
+	
+	public void dispalyMainMenu(RaiderUser givenUser) {
 		
 		Scanner scan = DataScanner.getDataScanner();
 		
@@ -52,6 +54,7 @@ public class MainMenu implements State {
 				switch (menuSel){
 					case 1: 
 						System.out.println("Now I'll show Fridge contents");
+						
 						break;
 	
 					case 2: 

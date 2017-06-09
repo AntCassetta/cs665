@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import raiderInventories.InventoryManager;
+import raiderInventories.RaiderInventory;
 import raiderInventories.RaiderItem;
-import raiderInventories.Refrigerator;
 import utilities.InvIterator;
 import utilities.OOSIterator;
 import utilities.OOSObserver;
@@ -14,10 +14,10 @@ public class OOSObserverTest {
 
 	@Test
 	public void test() {
-		InventoryManager testManager = new InventoryManager();
+		InventoryManager testManager = InventoryManager.getInstance();
 		testManager.addObserver(OOSObserver.getOOSObserver());
 		
-		Refrigerator testFridge = new Refrigerator(testManager, "test Fridge");
+		RaiderInventory testFridge = testManager.addInventory("testFridge", 01, "Refrigerator");
 		testFridge.addItem("Baby Spinich", 2, "produce");
 		testFridge.addItem("Milk", 0, "Dairy");
 		testFridge.addItem("butter", 0, "Dairy");
