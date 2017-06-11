@@ -20,9 +20,10 @@ public class LogIn implements State{
 	private ReadFile readUserFile = new ProxyReadTxtFile();
 	InventoryManager Manager = InventoryManager.getInstance();
 	
-	/**
-	 * 
-	 * @param givenUser
+	/**startLogIn prompts the end user for in their caseSentsative user name, user ID and user Type. 
+	 * Then checks this information against the userList.
+	 * If a match is found the appropriate values are set within the User object for the remainder of runtime.
+	 * @param givenUser the the singleton User object to be configured by the log in process.
 	 */
 	public void startLogIn(RaiderUser givenUser) {
 		
@@ -55,16 +56,11 @@ public class LogIn implements State{
 
 	
 	@Override
-	/**
-	 * 
-	 */
-	public void doAction(Context context) {
-		
-		this.startLogIn(context.getUser());	
+	/**This method corresponds with the Context object to facilitate the state pattern*/
+	public void doAction(Context context) {	this.startLogIn(context.getUser());	}//end doAction
 	
-	}//end doAction
-	/**
-	 * 
+	
+	/**loadRoster takes the singleton User, loads their roster information and creates instances of their rosters, if any.
 	 * @param givenUser
 	 */
 	public void loadRoster(RaiderUser givenUser) {
@@ -79,11 +75,8 @@ public class LogIn implements State{
 		}//end for
 	}//end loadRoster
 	
-	/**
-	 * 
-	 */
-	 public String toString(){
-		 return "LogIn";     
-	   }//end toString
+	
+	/** Returns a string representation of the object. This method is used to confirm the current state of Context.*/
+	 public String toString() { return "LogIn"; }//end toString
 
 }// end LogIn

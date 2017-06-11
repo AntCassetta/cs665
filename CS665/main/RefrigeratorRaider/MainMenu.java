@@ -13,12 +13,18 @@ import raiderInventories.InventoryManager;
 import raiderInventories.RaiderInventory;
 import userProfiles.RaiderUser;
 import utilities.DataScanner;
-
+/**MainMenu is a state used in the control of the Refrigerator Raider. MainMenu is the state which facilitates end user navigation.
+ * @author anthonycassetta
+ */
 public class MainMenu implements State {
 	
 	InventoryManager Manager = InventoryManager.getInstance();
 	private ReadFile readInventoryFile = new ProxyReadTxtFile();
 	
+	
+	/**Display MainMenu displays to the console the MainMenu options of the current user based on UserType.
+	 * @param givenUser the singleton user of the session.
+	 */
 	public void dispalyMainMenu(RaiderUser givenUser) {
 		
 		Scanner scan = DataScanner.getDataScanner();
@@ -98,10 +104,14 @@ public class MainMenu implements State {
 				System.out.println(e);
 				
 		}//try-catch end
-	
 	}//end StartMainMenu
 	
 	
+	/** loadInventory attempts to load the data of a given inventory and add each item to the given inventory if Items are found.
+	 * @param givenInventory the inventory to load data to
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void loadInventory(RaiderInventory givenInventory) throws FileNotFoundException, IOException {
 		String[] inventoryLine;
 		Vector<String> inventory = readInventoryFile.readInventoryFile(givenInventory.getInventoryName(), givenInventory.getInventoryID());
@@ -116,15 +126,13 @@ public class MainMenu implements State {
 		}//end else if to confirm cached data
 	}//end loadRoster
 
+	
 	@Override
-	public void doAction(Context context) {
-		
-		this.dispalyMainMenu(context.getUser());
-		
-	}
+	/**This method corresponds with the Context object to facilitate the state pattern*/
+	public void doAction(Context context) {		this.dispalyMainMenu(context.getUser());	}//end doAction
 	
-	public String toString(){
-	      return "MainMenu";
-	   }
 	
-}
+	/**Returns a string representation of the object. This method is used to confirm the current state of Context.*/
+	public String toString() { return "MainMenu"; }
+	
+}//end MainMenu
