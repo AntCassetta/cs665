@@ -1,7 +1,6 @@
 package RefrigeratorRaider;
 
 import java.util.Scanner;
-
 import utilities.DataScanner;
 
 public class RefrigeratorRaider {
@@ -33,12 +32,9 @@ public class RefrigeratorRaider {
 				System.out.println("current State: " + context.getState().toString());
 				logIn.doAction(context);
 				
-				
 				if (context.getUser().getUserType() == null) {
-				
 					break;
 				} else {
-					
 					context.setState(mainMenu);
 				}//end if else
 			

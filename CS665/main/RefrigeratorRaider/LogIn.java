@@ -10,7 +10,9 @@ import raiderInventories.InventoryManager;
 import userProfiles.RaiderUser;
 import utilities.DataScanner;
 
-
+/**LogIn is a state used in the control of the Refrigerator Raider. LogIn is the initial stare which facilitates user LogIn 
+ * @author anthonycassetta
+ */
 public class LogIn implements State{
 	
 	private Vector<String> candidate;
@@ -18,7 +20,10 @@ public class LogIn implements State{
 	private ReadFile readUserFile = new ProxyReadTxtFile();
 	InventoryManager Manager = InventoryManager.getInstance();
 	
-	
+	/**
+	 * 
+	 * @param givenUser
+	 */
 	public void startLogIn(RaiderUser givenUser) {
 		
 		RaiderUser activeUser = givenUser;
@@ -48,29 +53,37 @@ public class LogIn implements State{
 		
 	}//end startLogIn
 
+	
 	@Override
+	/**
+	 * 
+	 */
 	public void doAction(Context context) {
 		
 		this.startLogIn(context.getUser());	
 	
 	}//end doAction
-	
+	/**
+	 * 
+	 * @param givenUser
+	 */
 	public void loadRoster(RaiderUser givenUser) {
 		String[] rosterLine;
 		roster = readUserFile.readRosterFile(givenUser.getUserName(), givenUser.getUserID());
 		for (String I : roster) {
 		
-		rosterLine = I.split(Pattern.quote(","));
-		Manager.addInventory(rosterLine[0], Long.parseLong(rosterLine[1].trim()), rosterLine[2]);
+			rosterLine = I.split(Pattern.quote(","));
+			System.out.println(rosterLine[0]+ Long.parseLong(rosterLine[1].trim())+ rosterLine[2].trim());
+			Manager.addInventory(rosterLine[0], Long.parseLong(rosterLine[1].trim()), rosterLine[2].trim());
 
 		}//end for
-	
 	}//end loadRoster
 	
-	
+	/**
+	 * 
+	 */
 	 public String toString(){
-		 return "LogIn"; 
-	     
-	   }
+		 return "LogIn";     
+	   }//end toString
 
 }// end LogIn

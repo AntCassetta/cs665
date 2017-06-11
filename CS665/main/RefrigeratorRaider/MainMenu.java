@@ -1,15 +1,23 @@
 package RefrigeratorRaider;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Vector;
+import java.util.regex.Pattern;
+
+import dataIO.ProxyReadTxtFile;
+import io.ReadFile;
 import raiderInventories.InventoryManager;
+import raiderInventories.RaiderInventory;
 import userProfiles.RaiderUser;
 import utilities.DataScanner;
 
 public class MainMenu implements State {
 	
 	InventoryManager Manager = InventoryManager.getInstance();
-	//ArrayList<RaiderInventory> Roster = Manager.getInventoryRoster();
+	private ReadFile readInventoryFile = new ProxyReadTxtFile();
 	
 	public void dispalyMainMenu(RaiderUser givenUser) {
 		
@@ -53,7 +61,18 @@ public class MainMenu implements State {
 	
 				switch (menuSel){
 					case 1: 
-						System.out.println("One day I'll print your Refrigerator contents");
+						
+						//System.out.println("One day I'll print your Refrigerator contents");
+						for (RaiderInventory inventory: Manager.getInventoryRoster()) {
+							if (inventory.toString().equals("Refrigerator")) {
+								try {
+									this.loadInventory(inventory);
+								} catch (Exception e) { 
+									System.out.println(e); 
+								}
+								inventory.printContents();
+							}//end if
+						}//end for
 						
 						//TODO implement a system to pick between multiple Refrigerators
 						break;
@@ -61,6 +80,15 @@ public class MainMenu implements State {
 					case 2: 
 						
 						System.out.println("One day I'll print your ShoppingList");
+						for (RaiderInventory inventory: Manager.getInventoryRoster()) {
+							if (inventory.toString().equals("ShoppingList"))
+								try {
+									this.loadInventory(inventory);
+								} catch (Exception e) { 
+									System.out.println(e); 
+								}
+								inventory.printContents();
+						}
 						break;
 						
 				}//end Switch
@@ -72,6 +100,21 @@ public class MainMenu implements State {
 		}//try-catch end
 	
 	}//end StartMainMenu
+	
+	
+	public void loadInventory(RaiderInventory givenInventory) throws FileNotFoundException, IOException {
+		String[] inventoryLine;
+		Vector<String> inventory = readInventoryFile.readInventoryFile(givenInventory.getInventoryName(), givenInventory.getInventoryID());
+		if (inventory.firstElement().equals(givenInventory.getInventoryName() + givenInventory.getInventoryID())) {
+			for (String I : inventory) {
+				if (!I.equals(inventory.firstElement())){
+					inventoryLine = I.split(Pattern.quote(","));
+					//System.out.println(inventoryLine[0]+ Long.parseLong(inventoryLine[1].trim())+ inventoryLine[2].trim());
+					Manager.addItem(givenInventory, inventoryLine[0], Integer.parseInt(inventoryLine[1].trim()), inventoryLine[2].trim());
+				}//end if to skip first element
+			}//end for
+		}//end else if to confirm cached data
+	}//end loadRoster
 
 	@Override
 	public void doAction(Context context) {

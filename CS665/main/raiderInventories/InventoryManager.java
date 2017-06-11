@@ -58,6 +58,7 @@ public class InventoryManager extends Observable implements InventoryControl{
 		this.inventoryRoster.add(newInventory);
 		nextID++;
 		//newInventory.setInventoryID(nextID);
+		System.out.println(newInventory.toString());
 		return newInventory;
 		
 	}//end addInventory
@@ -133,17 +134,21 @@ public class InventoryManager extends Observable implements InventoryControl{
 	/**Prints contents of the inventory to the console*/
 	public void printContents(RaiderInventory givenInventory) {
 		
-		Position<RaiderItem> walk = givenInventory.itemInventory.first();
-		System.out.println("\nContents of "+ givenInventory.getInventoryName() + ":");
-		
-		while (walk != givenInventory.itemInventory.after(givenInventory.itemInventory.last())) {	
+		try {
+			Position<RaiderItem> walk = givenInventory.itemInventory.first();
+			System.out.println("\nContents of "+ givenInventory.getInventoryName() + ":");
 			
-				System.out.println("Item: " + walk.getElement().getItemName() + " | Qty: " + walk.getElement().getItemQuantity());
+			while (walk != givenInventory.itemInventory.after(givenInventory.itemInventory.last())) {	
 				
-				walk =  givenInventory.itemInventory.after(walk);
-		}//while end
-		System.out.println();
-	}//end printContents
+					System.out.println("Item: " + walk.getElement().getItemName() + " | Qty: " + walk.getElement().getItemQuantity());
+					
+					walk =  givenInventory.itemInventory.after(walk);
+			}//while end
+			System.out.println();
+		} catch (IllegalArgumentException e) {
+			System.out.println("\n" + givenInventory.getInventoryName() + " is empty.");
+		}//end try catch
+		}//end printContents
 
 	
 	/**Prints all OOS contents of the inventory to the console*/

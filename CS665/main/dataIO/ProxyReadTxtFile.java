@@ -65,11 +65,14 @@ public class ProxyReadTxtFile implements ReadFile {
 			readTextFile.readInventoryFile(givenInvName, givenInvID);
 			userInventory = readTextFile.getUserInventory();
 			System.out.println("\ndownloaded Inventory data.");
-			//readTextFile.displayInventory();
 		
+		} else if (!userInventory.firstElement().equals(givenInvName + givenInvID)) {
+			readTextFile.readInventoryFile(givenInvName, givenInvID);
+			userInventory = readTextFile.getUserInventory();
+			System.out.println("\ndownloaded Inventory data.");
+			
 		} else {
 			System.out.println("\nNo inventory download required.");
-			//readTextFile.displayInventory();
 		}
 		return (Vector<String>) userInventory.clone();
 	}//end readInventoryFile

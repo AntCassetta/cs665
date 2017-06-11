@@ -127,6 +127,8 @@ class ReadTxtFile implements ReadFile {
 		// This will reference one line at a time
 		String line = null;
 		
+		userInventory.add(givenInvName + givenInvID);
+		
 		try {
 		// FileReader reads text files in the default encoding.
 		FileReader fileReader = new FileReader(fileName);
