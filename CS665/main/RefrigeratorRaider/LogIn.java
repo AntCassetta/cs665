@@ -1,5 +1,7 @@
 package RefrigeratorRaider;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.Vector;
 import java.util.regex.Pattern;
@@ -20,12 +22,15 @@ public class LogIn implements State{
 	private ReadFile readUserFile = new ProxyReadTxtFile();
 	InventoryManager Manager = InventoryManager.getInstance();
 	
+	
 	/**startLogIn prompts the end user for in their caseSentsative user name, user ID and user Type. 
 	 * Then checks this information against the userList.
 	 * If a match is found the appropriate values are set within the User object for the remainder of runtime.
 	 * @param givenUser the the singleton User object to be configured by the log in process.
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public void startLogIn(RaiderUser givenUser) {
+	public void startLogIn(RaiderUser givenUser) throws FileNotFoundException, IOException {
 		
 		RaiderUser activeUser = givenUser;
 		
@@ -57,19 +62,21 @@ public class LogIn implements State{
 	
 	@Override
 	/**This method corresponds with the Context object to facilitate the state pattern*/
-	public void doAction(Context context) {	this.startLogIn(context.getUser());	}//end doAction
+	public void doAction(Context context) throws FileNotFoundException, IOException {	this.startLogIn(context.getUser());	}//end doAction
 	
 	
 	/**loadRoster takes the singleton User, loads their roster information and creates instances of their rosters, if any.
 	 * @param givenUser
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public void loadRoster(RaiderUser givenUser) {
+	public void loadRoster(RaiderUser givenUser) throws FileNotFoundException, IOException {
 		String[] rosterLine;
 		roster = readUserFile.readRosterFile(givenUser.getUserName(), givenUser.getUserID());
 		for (String I : roster) {
 		
 			rosterLine = I.split(Pattern.quote(","));
-			System.out.println(rosterLine[0]+ Long.parseLong(rosterLine[1].trim())+ rosterLine[2].trim());
+			//System.out.println(rosterLine[0]+ Long.parseLong(rosterLine[1].trim())+ rosterLine[2].trim());
 			Manager.addInventory(rosterLine[0], Long.parseLong(rosterLine[1].trim()), rosterLine[2].trim());
 
 		}//end for

@@ -15,6 +15,7 @@ public interface InventoryControl {
 	 */
 	public RaiderInventory addInventory(String nickName, long inventoryID, String classType);
 	
+	
 	/**Assigns an inventory object a nick name. Ex: "Kitchen"
 	 * 
 	 * @param givenName a string to assign to the inventories as a nick name
@@ -37,9 +38,11 @@ public interface InventoryControl {
 	public void printContents(RaiderInventory givenInventory);
 	
 	
+	/**Prints out of stock contents of the inventory to the console*/
 	public void printOOS(RaiderInventory givenInventory);
 	
 	
+	/**Prints expired contents of the inventory to the console*/
 	public void printEXP(RaiderInventory givenInventory);
 	
 	

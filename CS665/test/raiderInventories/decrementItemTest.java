@@ -20,7 +20,8 @@ public class decrementItemTest {
 		testFridge.decrementItem("Milk");
 		assertEquals(1, testFridge.itemInventory.first().getElement().getItemQuantity());
 		
-		while (testFridge.itemInventory.size() > 0 ) {testFridge.itemInventory.remove(testFridge.itemInventory.first());}
+		while (testFridge.itemInventory.size() > 0 ) {
+			testFridge.itemInventory.remove(testFridge.itemInventory.first()); }
 		
 	}
 

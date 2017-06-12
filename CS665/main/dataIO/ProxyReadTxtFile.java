@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.util.Vector;
 import io.ReadFile;
 
-
+/**Proxy file responsible for managing reading data from the text files representing Users, user rosters and inventory contents
+ * @author anthonycassetta
+ */
 public class ProxyReadTxtFile implements ReadFile {
 	
 	private ReadTxtFile readTextFile;
@@ -13,19 +15,25 @@ public class ProxyReadTxtFile implements ReadFile {
 	private Vector<String> userRoster;
 	private Vector<String> userInventory;
 	
+	
 	public ProxyReadTxtFile(){
 		this.readTextFile = new ReadTxtFile();
-		/*this.userCandidate = readTextFile.getUserCandidate();
-		this.userRoster= readTextFile.getUserRoster();
-		this.userInventory = readTextFile.getUserInventory();*/
 	}
-
+	
+	
+	/**Will return the cached data if present, otherwise will load and return the data from txt file.
+	 * @param givenUserName the user name to be verified
+	 * @param givenUserID the ID number of the user to be verified
+	 * @param givenUserType the type of user to be verified
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	@Override
-	public Vector<String> readUserFile(String givenUserName, long givenUserID, String givenUserType) {
+	public Vector<String> readUserFile(String givenUserName, long givenUserID, String givenUserType) throws FileNotFoundException, IOException {
 		if (userCandidate == null) {
 			
-			readTextFile.readUserFile(givenUserName, givenUserID, givenUserType);
-			userCandidate = readTextFile.getUserCandidate();
+			userCandidate = readTextFile.readUserFile(givenUserName, givenUserID, givenUserType);
+			//userCandidate = readTextFile.getUserCandidate();
 			System.out.println("\ndownloaded user data.");
 			//readTextFile.displayUser();
 		
@@ -40,35 +48,46 @@ public class ProxyReadTxtFile implements ReadFile {
 	}//end readUserFile
 
 	
+	/** Returns the user's roster if it's already been loaded, otherwise the user's inventory will be loaded from the text file.
+	 * @param givenUserName The user name associated with the roster
+	 * @param givenUserID  The userID associated with the roster
+	 * @return Vector<String> a vector of strings representing each rosters Name, ID, and Type 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public Vector<String> readRosterFile(String givenUserName, long givenUserID) {
+	public Vector<String> readRosterFile(String givenUserName, long givenUserID) throws FileNotFoundException, IOException {
 		
 		if (userRoster == null) {
-			readTextFile.readRosterFile(givenUserName, givenUserID);
-			userRoster = readTextFile.getUserRoster();
+			userRoster = readTextFile.readRosterFile(givenUserName, givenUserID);
 			System.out.println("\ndownloaded roster data.");
-			//readTextFile.displayRoster();
+
 		
 		} else {
 			System.out.println("\nNo roster download required.");
-			//readTextFile.displayRoster();
+
 		}
 		return (Vector<String>)userRoster.clone();
 	}//end readRosterFile
 
 	
+	/** Returns the user's inventory contents if it's already been loaded, otherwise the user's roster will be loaded from the text file.
+	 * @param givenInvName The associated inventory name
+	 * @param givenInvID  The associated inventory ID
+	 * @return Vector<String> a vector of strings representing each Items Name, ID, and Type
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public Vector<String> readInventoryFile(String givenInvName, long givenInvID) throws IOException, FileNotFoundException {
+	public Vector<String> readInventoryFile(String givenInvName, long givenInvID) throws FileNotFoundException, IOException {
 		if (userInventory == null){
-			readTextFile.readInventoryFile(givenInvName, givenInvID);
-			userInventory = readTextFile.getUserInventory();
+			userInventory =readTextFile.readInventoryFile(givenInvName, givenInvID);
 			System.out.println("\ndownloaded Inventory data.");
 		
 		} else if (!userInventory.firstElement().equals(givenInvName + givenInvID)) {
-			readTextFile.readInventoryFile(givenInvName, givenInvID);
-			userInventory = readTextFile.getUserInventory();
+			userInventory = readTextFile.readInventoryFile(givenInvName, givenInvID);
 			System.out.println("\ndownloaded Inventory data.");
 			
 		} else {

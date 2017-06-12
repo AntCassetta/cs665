@@ -17,7 +17,16 @@ class ReadTxtFile implements ReadFile {
 	private Vector<String> userRoster = new Vector<String>();
 	private Vector<String> userInventory = new Vector<String>();
 	
-	public Vector<String> readUserFile(String givenUserName, long givenUserID, String givenUserType) {
+	
+	/**Will load the user data from a test file, compare the given parameters and if a match is found return the match.
+	 * @param givenUserName the user name to be verified
+	 * @param givenUserID the ID number of the user to be verified
+	 * @param givenUserType the type of user to be verified
+	 * @return Vector<String> a vector string representing the user name, userID and userType
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public Vector<String> readUserFile(String givenUserName, long givenUserID, String givenUserType) throws FileNotFoundException, IOException {
 		
 		// The name of the file to open.
         String fileName = "UserList.txt";
@@ -69,7 +78,14 @@ class ReadTxtFile implements ReadFile {
 	}//end readUserFile
 	
 
-	public Vector<String> readRosterFile(String givenUserName, long givenUserID) {
+	/** Loads the user's roster from the text file and returns the information as a Vector of strings.
+	 * @param givenUserName The user name associated with the roster
+	 * @param givenUserID  The userID associated with the roster
+	 * @return Vector<String> a vector of strings representing each rosters Name, ID, and Type
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public Vector<String> readRosterFile(String givenUserName, long givenUserID) throws FileNotFoundException, IOException {
 		
 		// The name of the file to open.
         String fileName = givenUserName + String.format("%02d",givenUserID) + ".txt";
@@ -118,6 +134,13 @@ class ReadTxtFile implements ReadFile {
 	}//endRosterFile
 	
 	
+	/**The user's inventory will be loaded from the text file and vector of strings representing the items will be returned.
+	 * @param givenInvName The associated inventory name
+	 * @param givenInvID  The associated inventory ID
+	 * @return Vector<String> a vector of strings representing each Items Name, ID, and Type
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 */
 	public Vector<String> readInventoryFile(String givenInvName, long givenInvID) 
 			throws IOException, FileNotFoundException {
 
@@ -170,34 +193,4 @@ class ReadTxtFile implements ReadFile {
 
 	}//end readInventoryFile
 
-	
-	public Vector<String> getUserCandidate(){ return userCandidate;}
-	
-	
-	public Vector<String> getUserRoster(){ return userRoster;}
-	
-	
-	public Vector<String> getUserInventory(){ return userInventory;}
-	
-	
-	public void displayUser() {
-		for(String I: userCandidate) { 
-			System.out.print(I + "\n ");
-		}//end for
-	}//end displayUser
-	
-	
-	public void displayRoster() {
-		for(String I: userRoster) { 
-			System.out.print(I + "\n");
-		}//end for
-	}//end displayRoster
-	
-	
-	public void displayInventory() {
-		for(String I: userInventory) { 
-			System.out.print(I + "\n");
-		}//end for
-	}//end displayInvneotry
-	
 }//end ReadFileInventory
