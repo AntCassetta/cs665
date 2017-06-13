@@ -13,16 +13,17 @@ public class decrementItemTest {
 		testFridge.addItem("Milk", 2, "Dairy");
 		
 		
-		//assert statements
+		//assert the item was added properly
 		assertEquals(1, testFridge.itemInventory.size());
 		assertEquals("Milk", testFridge.itemInventory.first().getElement().getItemName());
 		assertEquals(2, testFridge.itemInventory.first().getElement().getItemQuantity());
+		
+		//Perform the decrement
 		testFridge.decrementItem("Milk");
 		assertEquals(1, testFridge.itemInventory.first().getElement().getItemQuantity());
 		
+		//Clear out the inventory contents
 		while (testFridge.itemInventory.size() > 0 ) {
-			testFridge.itemInventory.remove(testFridge.itemInventory.first()); }
-		
+			testFridge.itemInventory.remove(testFridge.itemInventory.first()); }	
 	}
-
 }
