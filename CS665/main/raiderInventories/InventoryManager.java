@@ -5,8 +5,7 @@ import java.util.Iterator;
 import java.util.Observable;
 import dataStructures.Position;
 import inventory.InventoryControl;
-import utilities.InvIterator;
-import utilities.OOSIterator;
+import utilities.UtilityTool;
 
 
 /**Inventory Manager is the concrete class for mediating the instances of Inventory objects and Item objects.
@@ -18,6 +17,7 @@ public class InventoryManager extends Observable implements InventoryControl{
 	private static final InventoryManager instance = new InventoryManager();
 	protected ArrayList<RaiderInventory> inventoryRoster;
 	int nextID = 00;
+	UtilityTool utilTool = new UtilityTool();
 
 	
 	/**Constructs an InventoryManager object*/
@@ -154,19 +154,7 @@ public class InventoryManager extends Observable implements InventoryControl{
 	/**Prints all OOS contents of the inventory to the console*/
 	public void printOOS(RaiderInventory givenInventory) {
 		
-		InvIterator<RaiderItem> OOSIter = new OOSIterator(givenInventory);
-		OOSIter.setToFirst();
-		
-		while (!OOSIter.isDone()) {
-			
-			RaiderItem temp = OOSIter.getCurrentElement();
-			System.out.println("Item: " + temp.getItemName() + " | Qty: " + temp.getItemQuantity());
-			
-			OOSIter.increment();
-			
-		}//end while
-		
-		System.out.println("Total item's out of stock: " + OOSIter.getTotal());
+		utilTool.checkForOOS(givenInventory);
 	
 	}//end printOOS
 	
@@ -359,11 +347,10 @@ public class InventoryManager extends Observable implements InventoryControl{
 		RaiderItem newItem;
 		
 		if (givenItemQuantity < 0 ){
+			
 			System.out.println("Illegal item quantity, the quantity of " + givenItemName + " must be zero or greater.\nSetting quantity to zero.");
 			newItem = ItemFactory.getItem(givenItemName, 0, givenItemType);
 			
-			
-		
 		} else {
 			
 			newItem = ItemFactory.getItem(givenItemName, givenItemQuantity, givenItemType);

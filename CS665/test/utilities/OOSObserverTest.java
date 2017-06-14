@@ -16,8 +16,9 @@ public class OOSObserverTest {
 	public void test() {
 		InventoryManager testManager = InventoryManager.getInstance();
 		testManager.addObserver(OOSObserver.getOOSObserver());
-		
 		RaiderInventory testFridge = testManager.addInventory("testFridge", 01, "Refrigerator");
+		
+		//add items, adding a zero quantity item will trigger an alert
 		testFridge.addItem("Baby Spinich", 2, "produce");
 		testFridge.addItem("Milk", 0, "Dairy");
 		testFridge.addItem("butter", 0, "Dairy");
@@ -26,23 +27,25 @@ public class OOSObserverTest {
 		testFridge.addItem("baking soda",1, "misc");
 		testFridge.addItem("eggs", 0, "Meat");
 		
-		
+		//iterator to show current out of stock.
 		InvIterator<RaiderItem> it = new OOSIterator(testFridge);
-		
 		it.setToFirst();
 		RaiderItem currentIt = it.getCurrentElement();
 		
-		//assert statements
+		//assert correct number of items and current iterator position.
 		assertEquals(7, testFridge.getItemInv().size());
 		assertEquals("Milk", currentIt.getItemName());
 		
+		//print out of stock to console
 		System.out.println();
 		testFridge.printOOS();
 		System.out.println();
 		
+		//decrement Items to trigger alert
 		testFridge.decrementItem("baking soda");
 		testFridge.updateItemQuantity("beef", 0);
 		
+		//print out of stock to console
 		System.out.println();
 		testFridge.printOOS();
 	}
