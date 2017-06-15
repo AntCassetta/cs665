@@ -57,8 +57,6 @@ public class InventoryManager extends Observable implements InventoryControl{
 		
 		this.inventoryRoster.add(newInventory);
 		nextID++;
-		//newInventory.setInventoryID(nextID);
-		//System.out.println(newInventory.toString());
 		return newInventory;
 		
 	}//end addInventory

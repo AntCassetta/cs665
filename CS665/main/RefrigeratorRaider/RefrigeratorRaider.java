@@ -7,7 +7,6 @@ import utilities.DataScanner;
 
 public class RefrigeratorRaider {
 	
-	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		//scanner object
 		Scanner scan = DataScanner.getDataScanner();

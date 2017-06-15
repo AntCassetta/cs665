@@ -8,8 +8,6 @@ public abstract class RaiderInventory implements Inventory<RaiderItem>{
 	private InventoryControl inventoryControl;
 	private long inventoryID;
 	private String inventoryName;
-	//private int totalItems = 0;
-	//private int totalOOS = 0;
 	protected LinkedPositionalList<RaiderItem> itemInventory = new LinkedPositionalList<RaiderItem>();
 	
 	public RaiderInventory (InventoryControl newInventoryControl,
